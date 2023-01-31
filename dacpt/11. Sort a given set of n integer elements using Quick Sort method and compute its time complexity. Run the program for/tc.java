@@ -3,6 +3,13 @@ varied values of n> 5000 and record the time taken to sort. Plot a graph of the 
 elements can be read from a file or can be generated using the random number generator. Demonstrate using Java how the
 divide and- conquer method works along with its time complexity analysis: worst case, average case and best case*/
 
+// This code is a Java program This code is a Java program that implements the QuickSort algorithm. The program begins by prompting the user to enter the number of elements they would like to sort. It then reads in each element from the user and stores them in an array. The program then prints out the unsorted elements and calls the sort() method, which uses QuickSort to sort the array. The partition() method is used to divide the array into two parts, with all elements less than or equal to a pivot element on one side and all elements greater than or equal to it on the other side. Finally, after sorting is complete, it prints out the sorted elements.
+
+// that implements the QuickSort algorithm. The program begins by prompting the user to enter the number of elements they would like to sort. It then reads in each element from the user and stores them in an array. The program then prints out the unsorted elements and calls the sort() method, which uses QuickSort to sort the array. The partition() method is used to divide the array into two parts, with all elements less than or equal to a pivot element on one side and all elements greater than or equal to it on the other side. Finally, after sorting is complete, it prints out the sorted elements.
+
+
+
+
 import java.io.*;
 
 class QuickSort
