@@ -1,4 +1,0 @@
-############################################################
-
-Write a program to solve the N-Queens problem using backtracking.
-

@@ -1,4 +1,0 @@
-############################################################
-
-Write a program to solve the Knapsack problem using a greedy algorithm.
-

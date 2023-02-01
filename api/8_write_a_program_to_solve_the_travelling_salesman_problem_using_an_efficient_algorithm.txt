@@ -1,4 +1,0 @@
-############################################################
-
-Write a program to solve the Travelling Salesman Problem using an efficient algorithm.
-

@@ -1,4 +1,0 @@
-############################################################
-
-Write a program to sort an array of integers using the Merge Sort algorithm.
-
