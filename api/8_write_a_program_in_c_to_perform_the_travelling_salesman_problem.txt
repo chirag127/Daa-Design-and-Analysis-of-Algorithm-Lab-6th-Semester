@@ -1,0 +1,54 @@
+############################################################
+
+Write a program in C to perform the Travelling Salesman Problem.
+
+ Here is a sample code in C to perform the Travelling Salesman Problem:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <limits.h>
+
+#define MAX_CITIES 100
+#define MAX_DISTANCE INT_MAX
+
+int n, m;
+int dist[MAX_CITIES][MAX_CITIES];
+bool visited[MAX_CITIES];
+int min_distance = MAX_DISTANCE;
+
+void tsp(int curr_city, int curr_distance, int cities_visited) {
+    if (cities_visited == n) {
+        if (curr_distance + dist[curr_city][0] < min_distance) {
+            min_distance = curr_distance + dist[curr_city][0];
+        }
+        return;
+    }
+
+    for (int i = 0; i < n; i++) {
+        if (!visited[i]) {
+            visited[i] = true;
+            tsp(i, curr_distance + dist[curr_city][i], cities_visited + 1);
+            visited[i] = false;
+        }
+    }
+}
+
+int main() {
+    printf("Enter the number of cities: ");
+    scanf("%d", &n);
+    printf("Enter the distance matrix:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &dist[i][j]);
+        }
+    }
+    visited[0] = true;
+    tsp(0, 0, 1);
+    printf("The minimum distance is: %d\n", min_distance);
+    return 0;
+}
+```
+
+This code uses a brute force approach to solve the TSP problem. It generates all possible permutations of the cities and finds the minimum distance among them. The code uses a recursive function `tsp` to perform the permutations and a 2D array `dist` to store the distances between the cities. The variable `visited` is used to keep track of the cities that have been visited so far. The variable `min_distance` is used to store the minimum distance found so far.

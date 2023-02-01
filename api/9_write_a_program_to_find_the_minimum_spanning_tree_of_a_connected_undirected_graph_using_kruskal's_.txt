@@ -1,0 +1,4 @@
+############################################################
+
+Write a program to find the Minimum Spanning Tree of a connected undirected graph using Kruskal's algorithm.
+

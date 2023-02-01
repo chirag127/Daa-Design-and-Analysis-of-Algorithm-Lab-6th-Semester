@@ -1,0 +1,58 @@
+############################################################
+
+Write a program in C to implement the Greedy solution for the Knapsack problem.
+
+ Sure, here is a program in C to implement the Greedy solution for the Knapsack problem:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Item
+{
+    int value, weight;
+};
+
+int compare(const void *a, const void *b)
+{
+    return (((struct Item *)b)->value / ((struct Item *)b)->weight) - (((struct Item *)a)->value / ((struct Item *)a)->weight);
+}
+
+int Knapsack(int W, struct Item arr[], int n)
+{
+    int value = 0;
+    qsort(arr, n, sizeof(struct Item), compare);
+    for (int i = 0; i < n; i++)
+    {
+        if (arr[i].weight <= W)
+        {
+            value += arr[i].value;
+            W -= arr[i].weight;
+        }
+        else
+        {
+            value += arr[i].value * W / arr[i].weight;
+            break;
+        }
+    }
+    return value;
+}
+
+int main()
+{
+    int W, n;
+    printf("Enter the capacity of knapsack: ");
+    scanf("%d", &W);
+    printf("Enter the number of items: ");
+    scanf("%d", &n);
+    struct Item arr[n];
+    printf("Enter the value and weight of each item:\n");
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d%d", &arr[i].value, &arr[i].weight);
+    }
+    int value = Knapsack(W, arr, n);
+    printf("The maximum value that can be put into the knapsack is: %d\n", value);
+    return 0;
+}
+```
