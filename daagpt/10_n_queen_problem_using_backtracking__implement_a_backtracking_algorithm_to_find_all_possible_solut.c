@@ -1,124 +1,94 @@
 write the codes in c following practical for my daa assignement 
 
 N Queen Problem using Backtracking: Implement a backtracking algorithm to find all possible solutions to the n-queens problem, which is to place n queens on an nxn chessboard such that no two queens attack each other.
- Here is a sample code in C to solve the N Queen problem using backtracking:
 
 ```
-#include <stdio.h>
-#include <stdbool.h>
-
+#include<stdio.h>
 #define N 8
 
 int board[N][N];
 
-bool is_attack(int row, int col) {
-    int i, j;
-    for (i = 0; i < col; i++)
-        if (board[row][i])
-            return true;
-    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
-        if (board[i][j])
-            return true;
-    for (i = row, j = col; j >= 0 && i < N; i++, j--)
-        if (board[i][j])
-            return true;
-    return false;
-}
-
-bool solve_n_queen(int col) {
-    if (col >= N)
-        return true;
-    for (int i = 0; i < N; i++) {
-        if (!is_attack(i, col)) {
-            board[i][col] = 1;
-            if (solve_n_queen(col + 1))
-                return true;
-            board[i][col] = 0;
-        }
-    }
-    return false;
-}
-
-void print_solution() {
-    for (int i = 0; i < N; i++) {
+void printSolution(int board[N][N])
+{
+    for (int i = 0; i < N; i++)
+    {
         for (int j = 0; j < N; j++)
             printf(" %d ", board[i][j]);
         printf("\n");
     }
 }
 
-int main() {
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < N; j++)
-            board[i][j] = 0;
-    if (solve_n_queen(0) == false) {
-        printf("Solution does not exist");
-        return 0;
-    }
-    print_solution();
-    return 0;
-}
-```
-/*
-explain the following code 
-
- Here is a sample code in C to solve the N Queen problem using backtracking:
-
-```
-#include <stdio.h>
-#include <stdbool.h>
-
-#define N 8
-
-int board[N][N];
-
-bool is_attack(int row, int col) {
+/* A utility function to check if a queen can be placed on board[row][col]. 
+   Note that this function is called when "col" queens are already placed 
+   in columns from 0 to col -1. So we need to check only left side for 
+   attacking queens */
+bool isSafe(int board[N][N], int row, int col)
+{
     int i, j;
+
+    /* Check this row on left side */
     for (i = 0; i < col; i++)
         if (board[row][i])
-            return true;
-    for (i = row, j = col; i >= 0 && j >= 0; i--, j--)
+            return false;
+
+    /* Check upper diagonal on left side */
+    for (i=row, j=col; i>=0 && j>=0; i--, j--)
         if (board[i][j])
-            return true;
-    for (i = row, j = col; j >= 0 && i < N; i++, j--)
+            return false;
+
+    /* Check lower diagonal on left side */
+    for (i=row, j=col; j>=0 && i<N; i++, j--)
         if (board[i][j])
-            return true;
-    return false;
+            return false;
+
+    return true;
 }
 
-bool solve_n_queen(int col) {
+/* A recursive utility function to solve N Queen problem */
+bool solveNQUtil(int board[N][N], int col)
+{
+    /* base case: If all queens are placed then return true */
     if (col >= N)
         return true;
-    for (int i = 0; i < N; i++) {
-        if (!is_attack(i, col)) {
+
+    /* Consider this column and try placing this queen in all rows
+       one by one */
+    for (int i = 0; i < N; i++)
+    {
+        if ( isSafe(board, i, col) )
+        {
+            /* Place this queen in board[i][col] */
             board[i][col] = 1;
-            if (solve_n_queen(col + 1))
+
+            /* recur to place rest of the queens */
+            if ( solveNQUtil(board, col + 1) == true )
                 return true;
-            board[i][col] = 0;
+
+            /* If placing queen in board[i][col
+               doesn't lead to a solution then
+               remove queen from board[i][col] */
+            board[i][col] = 0; // BACKTRACK
         }
     }
+
+     /* if the queen can not be placed in any row in
+        this column col then return false */
     return false;
 }
 
-void print_solution() {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++)
-            printf(" %d ", board[i][j]);
-        printf("\n");
-    }
-}
+/* Driver Code */
+int main()
+{
+    /* Initialization of Board matrix */
+    memset(board, 0, sizeof(board));
 
-int main() {
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < N; j++)
-            board[i][j] = 0;
-    if (solve_n_queen(0) == false) {
-        printf("Solution does not exist");
-        return 0;
+    if ( solveNQUtil(board, 0) == false )
+    {
+      printf("Solution does not exist");
+      return false;
     }
-    print_solution();
+
+    printSolution(board);
     return 0;
 }
 ```
- The code is a solution to the N-Queens problem using backtracking in C. It uses a 2D array `board[N][N]` to represent the chessboard where `N` is defined as 8. The `is_attack` function checks if a queen placed at row `row` and column `col` is under attack from any of the existing queens on the board. The `solve_n_queen` function uses backtracking to place all `N` queens on the board such that no two queens attack each other. The function returns `true` if a solution is found, otherwise `false`. The `print_solution` function prints the board with all queens placed. The `main` function initializes the board to all zeros, calls `solve_n_queen` and if a solution is found, it prints the solution. If a solution is not found, it prints "Solution does not exist".
-*/
