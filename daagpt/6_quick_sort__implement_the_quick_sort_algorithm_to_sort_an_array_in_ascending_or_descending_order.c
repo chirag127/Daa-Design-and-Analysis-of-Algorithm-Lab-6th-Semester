@@ -1,9 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-Quick Sort: Implement the quick sort algorithm to sort an array in ascending or descending order.
- Here's a sample code in C for quick sort algorithm to sort an array in ascending order:
-
-```
 #include <stdio.h>
 
 void quickSort(int arr[], int low, int high)
@@ -59,7 +54,7 @@ int main()
 }
 ```
 /*
- 
+
 
 - `#include <stdio.h>`: This line includes the standard input/output library in the program.
 

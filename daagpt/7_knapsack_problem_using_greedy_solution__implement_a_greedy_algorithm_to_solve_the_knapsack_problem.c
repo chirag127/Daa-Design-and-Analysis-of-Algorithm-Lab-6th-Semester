@@ -1,8 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-Knapsack Problem using Greedy Solution: Implement a greedy algorithm to solve the knapsack problem, which is a combinatorial optimization problem.
- 
-```
 #include <bits/stdc++.h>
 using namespace std;
 

@@ -30,8 +30,17 @@ int main(void)
     (result == -1) ? printf("Element is not present in array")
                    : printf("Element is present at index %d", result);
 
-    i/*
- 
+    int arr2[] = { 2, 3, 4, 10, 40 };
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    int x2 = 10;
+    int result2 = linearSearch(arr2, n2, x2);
+    (result2 == -1) ? printf("Element is not present in array")
+                    : printf("Element is present at index %d", result2);
+    return 0;
+}
+/*
+
+
 
 Binary Search:
 - `#include <stdio.h>`: This line includes the standard input-output library in the program.

@@ -1,8 +1,3 @@
-write the codes in c following practical for my daa assignement 
-
-Insertion Sort: Implement the insertion sort algorithm to sort an array in ascending or descending order.
- 
-```
 #include <stdio.h>
 
 void insertionSort(int arr[], int n, int ascending) {

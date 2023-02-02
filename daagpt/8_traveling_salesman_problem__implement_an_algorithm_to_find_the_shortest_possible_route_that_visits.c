@@ -1,9 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-Traveling Salesman Problem: Implement an algorithm to find the shortest possible route that visits a given set of cities and returns to the starting city.
- Here's a code in C for solving TSP using the nearest neighbor algorithm:
-
-```
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -56,7 +51,6 @@ int main() {
 
   return 0;
 }
-```
 /*
 
 

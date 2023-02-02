@@ -1,8 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-Selection Sort: Implement the selection sort algorithm to sort an array in ascending or descending order.
-
-```
 #include<stdio.h>
 #define MAX_SIZE 100
 
@@ -38,7 +34,6 @@ int main() {
     printf("%d\n", arr[i]);
   return 0;
 }
-```
 /*
 
 

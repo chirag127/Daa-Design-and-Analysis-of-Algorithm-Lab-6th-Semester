@@ -1,8 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-Minimum Spanning Tree using Kruskal’s Algorithm: Implement Kruskal's algorithm to find the minimum spanning tree of a connected undirected graph.
- 
-```
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -107,4 +103,4 @@ int main() {
   KruskalMST(graph);
   return 0;
 }
-```
+

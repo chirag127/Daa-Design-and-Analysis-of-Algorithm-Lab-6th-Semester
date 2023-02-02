@@ -56,7 +56,7 @@ int main()
     printf("Sorted array is \n");
     printArray(arr, n);
 }
-```
+
 /*
 
 
