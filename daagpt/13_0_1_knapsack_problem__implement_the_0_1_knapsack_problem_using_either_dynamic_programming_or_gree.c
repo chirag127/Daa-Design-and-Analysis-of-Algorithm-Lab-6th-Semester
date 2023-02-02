@@ -1,9 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-0/1 Knapsack Problem: Implement the 0/1 knapsack problem using either dynamic programming or greedy method.
- Here is an implementation of the 0/1 knapsack problem using dynamic programming in C:
-
-```
 #include<stdio.h>
 #define max(a,b) ((a)>(b)?(a):(b))
 

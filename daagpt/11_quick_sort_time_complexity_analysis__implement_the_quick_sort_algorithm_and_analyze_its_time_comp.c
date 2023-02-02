@@ -1,9 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-Quick Sort Time Complexity Analysis: Implement the quick sort algorithm and analyze its time complexity for varying values of n (number of elements in the array). Plot a graph to show the relationship between the time taken and n.
- Here's a code for Quick Sort in C:
-
-```
 #include<stdio.h>
 
 void swap(int *a, int *b)
@@ -57,6 +52,3 @@ int main()
     printArray(arr, n);
     return 0;
 }
-```
-
-For time complexity analysis, you can record the time taken for sorting an array of size n using the `clock()` function from the `time.h` library. Plot the time taken against `n` for different values of `n` to see the relationship between the time taken and `n`.

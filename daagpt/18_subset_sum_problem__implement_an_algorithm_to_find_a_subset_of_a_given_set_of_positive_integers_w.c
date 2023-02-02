@@ -1,8 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-Subset Sum Problem: Implement an algorithm to find a subset of a given set of positive integers whose sum is equal to a given positive integer.
-
-```
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -13,7 +9,7 @@ bool subset_sum(int arr[], int n, int sum) {
     if (arr[n-1] > sum)
         return subset_sum(arr, n-1, sum);
 
-    return subset_sum(arr, n-1, sum) || 
+    return subset_sum(arr, n-1, sum) ||
            subset_sum(arr, n-1, sum-arr[n-1]);
 }
 

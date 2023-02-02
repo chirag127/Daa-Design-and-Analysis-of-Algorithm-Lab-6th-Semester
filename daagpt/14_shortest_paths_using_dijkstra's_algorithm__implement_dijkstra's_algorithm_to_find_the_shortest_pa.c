@@ -1,8 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-Shortest Paths using Dijkstra's Algorithm: Implement Dijkstra's algorithm to find the shortest paths from a given vertex to all other vertices in a weighted connected graph.
-
-```
 #include<bits/stdc++.h>
 using namespace std;
 #define MAX 100005
@@ -57,4 +53,3 @@ int main()
         cout << dist[i] << " ";
     return 0;
 }
-```

@@ -1,8 +1,4 @@
-write the codes in c following practical for my daa assignement 
 
-N Queen Problem using Backtracking: Implement a backtracking algorithm to find all possible solutions to the n-queens problem, which is to place n queens on an nxn chessboard such that no two queens attack each other.
-
-```
 #include <stdio.h>
 #include <stdbool.h>
 
@@ -97,4 +93,3 @@ int main() {
   solveNQ();
   return 0;
 }
-```

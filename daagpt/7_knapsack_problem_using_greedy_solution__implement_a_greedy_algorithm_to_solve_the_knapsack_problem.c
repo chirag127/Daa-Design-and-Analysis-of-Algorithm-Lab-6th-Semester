@@ -41,7 +41,6 @@ int main() {
        << fractional_knapsack(W, arr, n);
   return 0;
 }
-```
 /*
 
 
