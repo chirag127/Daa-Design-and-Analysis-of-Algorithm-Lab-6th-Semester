@@ -1,0 +1,1 @@
+7. Program to illustrate JDBC connectivity. Program for maintaining database by sending queries. Design and implement a simple servlet book query with the help of JDBC & SQL. Create MS Access Database, Create on ODBC link, Compile & execute JAVA JDVC Socket.
