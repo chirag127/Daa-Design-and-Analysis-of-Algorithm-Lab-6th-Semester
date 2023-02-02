@@ -1,0 +1,13 @@
+3. Write a code simulating ARP /RARP protocols.
+/*
+
+
+The code is like a big phone book. 
+- `stdio.h` and `string.h` help the phone book work better. 
+- `struct ARP_entry` and `struct RARP_entry` are like different pages in the phone book where you can find people's names and addresses. 
+- `ARP_table` and `RARP_table` are like big drawers where you keep all the pages of the phone book. 
+- `ARP_table_size` and `RARP_table_size` are like counting how many pages are in the drawers. 
+- `ARP_request` and `RARP_request` are like asking someone for their phone number. If you find it in the phone book, you show it to them. If you don't, you ask someone else. 
+- `ARP_response` and `RARP_response` are like writing down someone's phone number in the phone book. If you already have their number, you change it to the new one. If you don't, you write it down for the first time.
+- `main` is like the boss of the phone book. It tells the phone book what to do and with what information.
+*/

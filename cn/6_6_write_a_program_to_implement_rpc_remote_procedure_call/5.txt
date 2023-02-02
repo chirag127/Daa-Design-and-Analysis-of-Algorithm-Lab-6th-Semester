@@ -1,0 +1,26 @@
+6. Write a program to implement RPC (Remote Procedure Call)
+/*
+
+
+1. `#include <stdio.h>`: This line helps us use the computer's keyboard and screen to talk to the computer. 
+2. `#include <rpc/rpc.h>`: This line helps us talk to other computers far away. 
+3. `int main(int argc, char *argv[])`: This line starts the main part of the program that does the work. It has two parts, `argc` and `argv`, that tell the program how many things were typed on the computer and what those things were. 
+4. `CLIENT *cl;`: This line makes a pointer to a special thing called `CLIENT` that helps us talk to the other computer. 
+5. `char *server;`: This line makes a pointer to a special string that holds the name of the other computer we want to talk to. 
+6. `char *result;`: This line makes a pointer to a special string that holds the answer we get back from the other computer. 
+7. `if (argc != 2)`: This line checks if we typed the right number of things on the computer. 
+8. `fprintf(stderr, "Usage: %s hostname\n", argv[0]);`: This line tells us we did something wrong and shows us how to do it right. 
+9. `exit(1);`: This line stops the program because something went wrong. 
+10. `server = argv[1];`: This line takes the second thing we typed on the computer and saves it as the name of the other computer. 
+11. `cl = clnt_create(server, PROGRAM, VERSION, "tcp");`: This line makes a connection to the other computer using the `CLIENT` pointer and the name of the other computer. 
+12. `if (cl == NULL)`: This line checks if the connection to the other computer was made successfully. 
+13. `clnt_pcreateerror(server);`: This line tells us what went wrong with the connection. 
+14. `exit(1);`: This line stops the program because something went wrong. 
+15. `result = remote_procedure_call(cl, ...);`: This line calls the other computer and asks it to do something. 
+16. `if (result == NULL)`: This line checks if the other computer was able to do what we asked. 
+17. `clnt_perror(cl, server);`: This line tells us what went wrong with the other computer. 
+18. `exit(1);`: This line stops the program because something went wrong. 
+19. `printf("Result: %s\n", result);`: This line shows us the answer we got back from the other computer. 
+20. `clnt_destroy(cl);`: This line ends the connection to the other computer. 
+21. `return 0;`: This line tells the computer that the program is done and everything went well.
+*/

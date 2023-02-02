@@ -1,0 +1,62 @@
+Knapsack Problem using Greedy Solution: Implement a greedy algorithm to solve the knapsack problem, which is a combinatorial optimization problem.
+/*
+  
+```
+#include<bits/stdc++.h> 
+```
+This line is like asking your mom to give you all the toys you need to play with.
+
+```
+using namespace std; 
+```
+This line is like telling your mom to let you play with all the toys she gave you.
+
+```
+struct item{ 
+    int value, weight; 
+}; 
+```
+This line is like making a toy box with two compartments, one for the value of the toy and one for its weight.
+
+```
+bool cmp(struct item a, struct item b){ 
+    double r1 = (double)a.value / a.weight; 
+    double r2 = (double)b.value / b.weight; 
+    return r1 > r2; 
+} 
+```
+This line is like making a helper to compare two toys and say which one is better. The helper compares the value of the toy divided by its weight. The one with the bigger number is better.
+
+```
+double fractionalKnapsack(int W, struct item arr[], int n){ 
+    sort(arr, arr + n, cmp); 
+    int curWeight = 0; 
+    double finalvalue = 0.0; 
+    for (int i = 0; i < n; i++){ 
+        if (curWeight + arr[i].weight <= W){ 
+            curWeight += arr[i].weight; 
+            finalvalue += arr[i].value; 
+        } 
+        else{ 
+            int remain = W - curWeight; 
+            finalvalue += arr[i].value * ((double) remain / arr[i].weight); 
+            break; 
+        } 
+    } 
+    return finalvalue; 
+} 
+```
+This line is like making a helper to put toys in a knapsack. The helper first sorts the toys using the helper made earlier. Then, it starts putting the toys in the knapsack one by one. If the knapsack is full, it stops. The helper returns the total value of the toys in the knapsack.
+
+```
+int main(){ 
+    int W = 50; 
+    item arr[] = {{60, 10}, {100, 20}, {120, 30}}; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    cout << "Maximum value we can obtain = " 
+         << fractionalKnapsack(W, arr, n); 
+    return 0; 
+} 
+```
+This line is like you playing with the toys. You set the weight limit of the knapsack to 50. You have three toys with different values and weights. You use the helper to put the toys in the knapsack and get the total value of the toys. You print the total value and then stop playing.
+*/

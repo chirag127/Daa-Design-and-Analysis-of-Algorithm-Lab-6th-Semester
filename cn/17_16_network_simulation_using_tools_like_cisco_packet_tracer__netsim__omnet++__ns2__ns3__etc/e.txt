@@ -1,0 +1,108 @@
+/*
+
+
+```
+#include "ns3/core-module.h"
+#include "ns3/network-module.h"
+#include "ns3/internet-module.h"
+#include "ns3/point-to-point-module.h"
+#include "ns3/applications-module.h"
+```
+- These are header files that include the definitions of classes and functions used in the code.
+
+```
+using namespace ns3;
+```
+- This line allows you to use the `ns3` namespace without having to prefix it each time.
+
+```
+NS_LOG_COMPONENT_DEFINE ("FirstScriptExample");
+```
+- This line sets the component name for logging purposes.
+
+```
+int main (int argc, char *argv[])
+{
+  CommandLine cmd;
+  cmd.Parse (argc, argv);
+```
+- This is the main function, which takes in `argc` and `argv` from the command line. The `CommandLine` object `cmd` is used to parse these arguments.
+
+```
+  Time::SetResolution (Time::NS);
+  LogComponentEnable ("UdpEchoClientApplication", LOG_LEVEL_INFO);
+  LogComponentEnable ("UdpEchoServerApplication", LOG_LEVEL_INFO);
+```
+- These lines set the time resolution to nanoseconds and enable logging for the `UdpEchoClientApplication` and `UdpEchoServerApplication`.
+
+```
+  NodeContainer nodes;
+  nodes.Create (2);
+```
+- This creates a `NodeContainer` object `nodes` and creates 2 nodes.
+
+```
+  PointToPointHelper pointToPoint;
+  pointToPoint.SetDeviceAttribute ("DataRate", StringValue ("5Mbps"));
+  pointToPoint.SetChannelAttribute ("Delay", StringValue ("2ms"));
+```
+- This creates a `PointToPointHelper` object `pointToPoint` and sets the data rate to 5 Mbps and the delay to 2 ms.
+
+```
+  NetDeviceContainer devices;
+  devices = pointToPoint.Install (nodes);
+```
+- This creates a `NetDeviceContainer` object `devices` and installs the devices on the nodes using the `pointToPoint` object.
+
+```
+  InternetStackHelper stack;
+  stack.Install (nodes);
+```
+- This creates an `InternetStackHelper` object `stack` and installs the Internet stack on the nodes.
+
+```
+  Ipv4AddressHelper address;
+  address.SetBase ("10.1.1.0", "255.255.255.0");
+```
+- This creates an `Ipv4AddressHelper` object `address` and sets the base address to `10.1.1.0` with a subnet mask of `255.255.255.0`.
+
+```
+  Ipv4InterfaceContainer interfaces = address.Assign (devices);
+```
+- This creates an `Ipv4InterfaceContainer` object `interfaces` and assigns IP addresses to the devices using the `address` object.
+
+```
+  UdpEchoServerHelper echoServer (9);
+```
+- This creates a `UdpEchoServerHelper` object `echoServer` on port 9.
+
+```
+  ApplicationContainer serverApps = echoServer.Install (nodes.Get (1));
+  serverApps.Start (Seconds (1.0));
+  serverApps.Stop (Seconds (10.0));
+```
+- This installs the `echoServer` on the second node, starts it at 1 second, and stops it at 10 seconds.
+
+```
+  UdpEchoClientHelper echoClient (interfaces.GetAddress (1), 9);
+  echoClient.SetAttribute ("MaxPackets", UintegerValue (1));
+  echoClient.SetAttribute ("Interval", TimeValue (Seconds (1.0)));
+  echoClient.SetAttribute ("PacketSize", UintegerValue (1024));
+```
+- This creates a `UdpEchoClientHelper` object `echoClient` that sends packets to the IP address of the second node on port 9. It sets the maximum number of packets to 1, the interval to 1 second, and the packet size to 1024 bytes.
+
+```
+  ApplicationContainer clientApps = echoClient.Install (nodes.Get (0));
+  clientApps.Start (Seconds (2.0));
+  clientApps.Stop (Seconds (10.0));
+```
+- This installs the `echoClient` on the first node, starts it at 2 seconds, and stops it at 10 seconds.
+
+```
+  Simulator::Run ();
+  Simulator::Destroy ();
+  return 0;
+}
+```
+- This runs the simulator and destroys it after it's done. The function returns 0 to indicate a successful run.
+*/

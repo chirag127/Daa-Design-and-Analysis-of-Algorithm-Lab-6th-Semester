@@ -1,0 +1,5 @@
+Minimum Spanning Tree using Kruskal’s Algorithm: Implement Kruskal's algorithm to find the minimum spanning tree of a connected undirected graph.
+/*
+
+This code helps us find the shortest path between different points in a graph. It does this by sorting all the lines connecting the points by how long they are, and then adding the shortest line that doesn't make a loop. The end result is the shortest path between all the points.
+*/

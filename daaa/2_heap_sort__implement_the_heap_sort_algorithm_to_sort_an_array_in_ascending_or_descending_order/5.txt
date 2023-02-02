@@ -1,0 +1,6 @@
+Heap Sort: Implement the heap sort algorithm to sort an array in ascending or descending order.
+/*
+
+
+The code is about sorting numbers in an array. It has a function called `heapSort` that takes an array and its size as inputs and sorts the array. It also has a function called `printArray` that takes an array and its size as inputs and prints the numbers in the array. The `main` function creates an array with numbers and calls the `heapSort` function to sort the array. Finally, it prints the sorted array using the `printArray` function.
+*/

@@ -1,0 +1,74 @@
+/*
+
+
+```
+#include<stdio.h>
+```
+This line includes the standard input/output library in the code.
+
+```
+#include<math.h>
+```
+This line includes the math library in the code.
+
+```
+int main()
+```
+This line declares the `main` function, which is the entry point of the program.
+
+```
+int i, j, k, n, m, p, q, r, s, t, u, v, w, x, y, z;
+```
+These lines declare multiple integer variables, but they are not used in the code.
+
+```
+unsigned int ip, subnet_mask, network_address, host_min, host_max, broadcast_address;
+```
+These lines declare multiple unsigned integer variables to store the IP address, subnet mask, network address, host range, and broadcast address.
+
+```
+printf("Enter IP address in decimal notation: ");
+scanf("%u", &ip);
+```
+These lines prompt the user to enter the IP address and store the input in the `ip` variable.
+
+```
+printf("Enter subnet mask in decimal notation: ");
+scanf("%u", &subnet_mask);
+```
+These lines prompt the user to enter the subnet mask and store the input in the `subnet_mask` variable.
+
+```
+n = ip & subnet_mask;
+network_address = n;
+```
+These lines calculate the network address by performing a bitwise AND operation between the IP address and the subnet mask, and store the result in the `network_address` variable.
+
+```
+m = pow(2, 32 - __builtin_popcount(subnet_mask));
+```
+This line calculates the number of hosts in a subnet by subtracting the number of set bits in the subnet mask from 32, and raising 2 to the power of the result. The result is stored in the `m` variable.
+
+```
+host_min = network_address + 1;
+host_max = network_address + m - 2;
+```
+These lines calculate the minimum and maximum host addresses by adding 1 to the network address and subtracting 2 from the number of hosts, respectively. The results are stored in the `host_min` and `host_max` variables.
+
+```
+broadcast_address = network_address + m - 1;
+```
+This line calculates the broadcast address by adding the number of hosts minus 1 to the network address. The result is stored in the `broadcast_address` variable.
+
+```
+printf("\nNetwork address is: %u", network_address);
+printf("\nBroadcast address is: %u", broadcast_address);
+printf("\nHost range is: %u - %u", host_min, host_max);
+```
+These lines print the network address, broadcast address, and host range to the console.
+
+```
+return 0;
+```
+This line returns 0 to indicate that the program has executed successfully.
+*/

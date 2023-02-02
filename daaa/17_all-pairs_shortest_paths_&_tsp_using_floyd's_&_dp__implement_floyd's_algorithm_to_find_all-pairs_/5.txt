@@ -1,0 +1,23 @@
+All-Pairs Shortest Paths & TSP using Floyd's & DP: Implement Floyd's algorithm to find all-pairs shortest paths in a weighted graph, and implement a dynamic programming solution to the traveling salesman problem.
+/*
+ 
+1. The first line is like asking your mom to give you a toy, but the toy is a special tool to help us read and write things on the computer.
+2. The second line is like giving a toy a name, we call it "MAX_N" and it's like a big box with 100 toys inside.
+3. The third line is like giving another toy a name, we call it "INF" and it's a really big box with 1000000 toys inside.
+4. The fourth line is like making a new toy, it's called "n" and it's a toy that can have different numbers.
+5. The fifth line is like making a big toy house, it's called "g" and it has 100 rooms and in each room, there are 100 toys.
+6. The sixth line is like a recipe to make a toy, it's called "floyd" and it helps us find the shortest path between all the rooms in the toy house "g".
+7. The seventh line is like another recipe to make a toy, it's called "tsp" and it helps us find the shortest path to visit all the rooms in the toy house "g".
+8. The eighth line is like asking "Is the toy house completely visited?" If yes, it gives us the shortest path from the current room to the first room.
+9. The ninth line is like making a new toy, it's called "res" and it's a really big toy box with 1000000 toys inside.
+10. The tenth line is like asking the computer to do something many times, it's going to visit all the rooms in the toy house one by one.
+11. The eleventh line is like asking "Has this room been visited?" If not, it continues.
+12. The twelfth line is like asking the computer to find the shortest path from the current room to the next room and from the next room to all the other rooms.
+13. The thirteenth line is like giving the shortest path back.
+14. The fourteenth line is the most important one, it's like the boss of all the toys and recipes.
+15. The fifteenth line is like asking the computer to read the number of rooms in the toy house.
+16. The sixteenth line is like asking the computer to read the distance between each room and store it in the toy house "g".
+17. The seventeenth line is like asking the computer to follow the recipe "floyd" to find the shortest path between all the rooms.
+18. The eighteenth line is like asking the computer to print the shortest path to visit all the rooms starting from the first room.
+19. The nineteenth line is like saying "The game is over and we did a great job!" to the computer.
+*/

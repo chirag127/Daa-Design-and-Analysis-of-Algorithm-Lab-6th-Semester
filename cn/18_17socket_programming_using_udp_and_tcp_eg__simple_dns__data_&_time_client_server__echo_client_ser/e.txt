@@ -1,0 +1,102 @@
+/*
+
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+```
+- The first few lines are header file includes, which bring in functions and definitions from standard libraries.
+
+`#define BUFSIZE 1024`
+- Define a constant buffer size of 1024 bytes.
+
+```
+int main(int argc, char *argv[])
+{
+    int sockfd;
+    struct sockaddr_in servaddr, cliaddr;
+    socklen_t cliaddrlen;
+    char buf[BUFSIZE];
+```
+- `main` function starts here, with `sockfd` as an integer variable to hold the socket file descriptor.
+- `servaddr` is a structure of type `struct sockaddr_in` to store the server address information.
+- `cliaddr` is a structure of type `struct sockaddr_in` to store the client address information.
+- `cliaddrlen` is a variable of type `socklen_t` to store the length of the client address structure.
+- `buf` is a character array of size `BUFSIZE` to store incoming and outgoing data.
+
+```
+    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
+        perror("socket");
+        exit(EXIT_FAILURE);
+    }
+```
+- `socket` function creates a socket and returns the socket file descriptor.
+- `AF_INET` specifies the address family as Internet Protocol v4.
+- `SOCK_DGRAM` specifies the socket type as datagram.
+- `0` is the protocol number, which is set to 0 to automatically select the proper protocol.
+- If the socket creation fails, `perror` function is called with the string "socket" as an argument to print an error message, and the program exits with failure status.
+
+```
+    memset(&servaddr, 0, sizeof(servaddr));
+    servaddr.sin_family = AF_INET;
+    servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+    servaddr.sin_port = htons(9876);
+```
+- `memset` function sets all the bytes of the `servaddr` structure to 0.
+- `servaddr.sin_family` is set to `AF_INET`.
+- `servaddr.sin_addr.s_addr` is set to `htonl(INADDR_ANY)`, which specifies the IP address as any available IP address on the host.
+- `servaddr.sin_port` is set to `htons(9876)`, which specifies the port number as 9876 in network byte order.
+
+```
+    if (bind(sockfd, (struct sockaddr *) &servaddr, sizeof(servaddr)) < 0) {
+        perror("bind");
+        exit(EXIT_FAILURE);
+    }
+```
+- `bind` function associates the socket with the specified address and port.
+- If the bind fails, `perror` function is called with the string "bind" as an argument to print an error message, and the program exits with failure status.
+
+```
+    for (;;) {
+        cliaddrlen = sizeof(cliaddr);
+        if (recvfrom(sockfd, buf, BUFSIZE, 0, (struct sockaddr *) &cliaddr, &cliaddrlen) < 0) {
+            perror("recvfrom");
+            exit(EXIT_FAILURE);
+        }
+```
+- The `for (;;)` loop runs indefinitely until the program is terminated.
+- `cliaddrlen` is set to the size of the `cliaddr` structure.
+- `recvfrom` function receives data from a socket.
+- `sockfd` is the socket file descriptor.
+- `buf` is the buffer to store the received data.
+- `BUFSIZE` is the maximum number of bytes to receive.
+- `0` is the flags argument, which is set to 0 for no flags.
+- `(struct sockaddr *) &cliaddr` is a pointer to the `cliaddr` structure, which stores the address of the sender.
+- `&cliaddrlen` is a pointer to `cliaddrlen`, which stores the length of the `cliaddr` structure.
+- If `recvfrom` fails, `perror` function is called with the string "recvfrom" as an argument to print an error message, and the program exits with failure status.
+
+```
+        if (sendto(sockfd, buf, strlen(buf), 0, (struct sockaddr *) &cliaddr, cliaddrlen) < 0) {
+            perror("sendto");
+            exit(EXIT_FAILURE);
+        }
+    }
+```
+- `sendto` function sends data to a socket.
+- `sockfd` is the socket file descriptor.
+- `buf` is the buffer to send.
+- `strlen(buf)` is the number of bytes to send.
+- `0` is the flags argument, which is set to 0 for no flags.
+- `(struct sockaddr *) &cliaddr` is a pointer to the `cliaddr` structure, which stores the address of the receiver.
+- `cliaddrlen` is the length of the `cliaddr` structure.
+- If `sendto` fails, `perror` function is called with the string "sendto" as an argument to print an error message, and the program exits with failure status.
+
+```
+    return 0;
+}
+```
+- The `main` function returns 0 to indicate successful completion.
+*/

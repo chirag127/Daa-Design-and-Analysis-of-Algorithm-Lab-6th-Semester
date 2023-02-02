@@ -1,0 +1,75 @@
+7. Implementation of Subnetting .
+/*
+ 
+
+```
+#include<stdio.h>
+```
+This line tells the computer to use a toolbox called "stdio.h" to help it understand what you want it to do. 
+
+```
+#include<math.h>
+```
+This line tells the computer to use another toolbox called "math.h" to help it with some math problems. 
+
+```
+int main()
+```
+This line starts the main part of the program. It's like a boss telling the computer what to do.
+
+```
+int i, j, k, n, m, p, q, r, s, t, u, v, w, x, y, z;
+```
+These lines tell the computer to make some helpers called "i", "j", "k", "n", "m", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", and "z". 
+
+```
+unsigned int ip, subnet_mask, network_address, host_min, host_max, broadcast_address;
+```
+These lines tell the computer to make some more helpers to store some information about IP address, subnet mask, network address, host range, and broadcast address. 
+
+```
+printf("Enter IP address in decimal notation: ");
+scanf("%u", &ip);
+```
+These lines tell the computer to ask you to type in the IP address and store it in the helper "ip".
+
+```
+printf("Enter subnet mask in decimal notation: ");
+scanf("%u", &subnet_mask);
+```
+These lines tell the computer to ask you to type in the subnet mask and store it in the helper "subnet_mask".
+
+```
+n = ip & subnet_mask;
+network_address = n;
+```
+These lines tell the computer to use the "&" operator to find the network address and store it in the helper "network_address".
+
+```
+m = pow(2, 32 - __builtin_popcount(subnet_mask));
+```
+This line tells the computer to use the "pow" function from the "math.h" toolbox to find the number of hosts in a subnet and store it in the helper "m".
+
+```
+host_min = network_address + 1;
+host_max = network_address + m - 2;
+```
+These lines tell the computer to find the minimum and maximum host addresses by adding 1 and subtracting 2, respectively, and store the results in the helpers "host_min" and "host_max".
+
+```
+broadcast_address = network_address + m - 1;
+```
+This line tells the computer to find the broadcast address by adding the number of hosts minus 1 to the network address and store the result in the helper "broadcast_address".
+
+```
+printf("\nNetwork address is: %u", network_address);
+printf("\nBroadcast address is: %u", broadcast_address);
+printf("\nHost range is: %u - %u", host_min, host_max);
+```
+These lines tell the computer to show you the network address, broadcast address, and host range on the screen.
+
+```
+return 0;
+```
+This line tells the computer that the program is finished and everything is okay.
+*/

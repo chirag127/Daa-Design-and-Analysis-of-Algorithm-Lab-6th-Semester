@@ -1,0 +1,4 @@
+1. Implementation of Stop and Wait Protocol and Sliding Window Protocol.
+/*
+ The code is a C language implementation of the Stop and Wait protocol, a simple data transmission protocol. It connects to a server, sends messages, and receives messages from the server. The code uses the socket programming API to communicate with the server.
+*/

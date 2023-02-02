@@ -1,0 +1,62 @@
+Quick Sort Time Complexity Analysis: Implement the quick sort algorithm and analyze its time complexity for varying values of n (number of elements in the array). Plot a graph to show the relationship between the time taken and n.
+/*
+ 
+
+```
+#include <stdio.h>
+```
+This line is like asking for help from a friend named `stdio.h` so we can print things on the screen.
+
+```
+void swap(int *a, int *b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+```
+This function `swap` takes two friends named `a` and `b`, and swaps their values by using a temporary friend named `temp`.
+
+```
+int partition(int arr[], int low, int high) {
+  int pivot = arr[high];
+  int i = low - 1;
+
+  for (int j = low; j <= high - 1; j++) {
+    if (arr[j] < pivot) {
+      i++;
+      swap(&arr[i], &arr[j]);
+    }
+  }
+  swap(&arr[i + 1], &arr[high]);
+  return (i + 1);
+}
+```
+This function `partition` takes an array of friends named `arr`, and two friends named `low` and `high` as input. It selects the last friend of the array as the pivot and uses two friends `i` and `j` to partition the array such that all friends less than the pivot are to the left of the pivot and all friends greater than the pivot are to the right. The pivot is then placed in its final position in the sorted array.
+
+```
+void quickSort(int arr[], int low, int high) {
+  if (low < high) {
+    int pi = partition(arr, low, high);
+    quickSort(arr, low, pi - 1);
+    quickSort(arr, pi + 1, high);
+  }
+}
+```
+This function `quickSort` sorts the array of friends `arr` by dividing it into two sub-arrays and calling itself recursively on each sub-array until the sub-array has only one friend.
+
+```
+int main() {
+  int arr[] = {10, 7, 8, 9, 1, 5};
+  int n = sizeof(arr) / sizeof(arr[0]);
+
+  quickSort(arr, 0, n - 1);
+
+  printf("Sorted array: \n");
+  for (int i = 0; i < n; i++)
+    printf("%d ", arr[i]);
+
+  return 0;
+}
+```
+In the `main` function, an array of friends `arr` of integers is declared and initialized with values. The size of the array of friends `n` is calculated using `sizeof` operator. The `quickSort` function is then called on the entire array of friends `arr` with `0` as the lower index and `n-1` as the upper index. The sorted array of friends is then printed.
+*/

@@ -1,0 +1,105 @@
+/*
+ 
+
+Line 1-4: 
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <limits.h>
+```
+These are header files that are included in the program. `stdio.h` contains functions for input and output, `stdlib.h` contains functions for memory allocation and conversions, `stdbool.h` contains a `bool` data type and `limits.h` contains macros for the maximum and minimum values of various data types.
+
+Line 6-7: 
+```
+#define MAX_CITIES 100
+#define INFINITY INT_MAX
+```
+These are macros that define the maximum number of cities and the value of infinity.
+
+Line 9-11:
+```
+int dist[MAX_CITIES][MAX_CITIES];
+int cities[MAX_CITIES];
+int n;
+```
+These are global variables. `dist` is a 2D array that stores the distances between cities, `cities` is an array that stores the cities, and `n` is the number of cities.
+
+Line 13:
+```
+int tsp(int currCity, int visited, int cost) {
+```
+This is the declaration of the `tsp` function, which is the main function that solves the Traveling Salesman Problem. The function takes 3 parameters: `currCity` is the current city, `visited` is a bitmask that stores which cities have been visited, and `cost` is the current cost of the route.
+
+Line 14:
+```
+    if (visited == (1 << n) - 1) {
+```
+This is the base case of the function. If all cities have been visited (i.e. `visited` is equal to `(1 << n) - 1`), the function returns the cost of the route plus the distance from the current city to the starting city (i.e. `dist[currCity][0]`).
+
+Line 16:
+```
+    int minCost = INFINITY;
+```
+This is the variable that stores the minimum cost of the route. It is initialized to infinity.
+
+Line 17-24:
+```
+    for (int i = 0; i < n; i++) {
+        if (!(visited & (1 << i))) {
+            int newCost = cost + dist[currCity][i];
+            int newVisited = visited | (1 << i);
+            int res = tsp(i, newVisited, newCost);
+            minCost = min(minCost, res);
+        }
+    }
+```
+This is the main loop of the function. For each city `i`, if it has not been visited (i.e. `!(visited & (1 << i))`), the function calculates the new cost of the route by adding the distance from the current city to city `i` (i.e. `dist[currCity][i]`), and updates the visited cities by setting the `i`-th bit of `visited` (i.e. `visited | (1 << i)`). Then, the function calls itself with the new values of `currCity`, `visited`, and `cost`, and updates the minimum cost of the route by taking the minimum of `minCost` and the result.
+
+Line 26:
+```
+    return minCost;
+```
+This is the return value of the function. The function returns the minimum cost of the route.
+
+Line 28:
+```
+int main() {
+```
+This is the declaration of the `main` function, which is the entry point of the program.
+
+Line 29:
+```
+    scanf("%d", &n);
+```
+This reads the number of cities from the standard input.
+
+Line 30-34:
+```
+    for (int i = 0; i < n; i++) {
+        cities[i] = i;
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &dist[i][j]);
+        }
+    }
+```
+This loop reads the distances between cities from the standard input. `cities[i]` is set to `i` for each city `i`, but it is not used in the program.
+
+Line 36:
+```
+    int cost = tsp(0, 1, 0);
+```
+This calls the `tsp` function with the starting city (i.e. city 0), the starting city as the only visited city (i.e. `1 << 0 = 1`), and the starting cost (i.e. 0). The result is stored in the `cost` variable.
+
+Line 37:
+```
+    printf("Minimum cost: %d\n", cost);
+```
+This prints the minimum cost of the route to the standard output.
+
+Line 38:
+```
+    return 0;
+```
+This is the return value of the `main` function. The program returns 0, indicating that it has executed successfully.
+*/

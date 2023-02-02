@@ -1,0 +1,69 @@
+/*
+
+
+1. `#include <stdio.h>` and `#include <stdlib.h>` are header files for standard input/output and standard library functions, respectively.
+
+2. `#include <unistd.h>` is a header file for POSIX API functions.
+
+3. `#include <string.h>` is a header file for string manipulation functions.
+
+4. `#include <sys/types.h>` and `#include <sys/socket.h>` are header files for system data types and socket functions, respectively.
+
+5. `#include <netinet/in.h>` and `#include <netdb.h>` are header files for Internet address manipulation and network database functions, respectively.
+
+6. `void error(const char *msg)` is a function that takes an error message as an argument and prints the error message using `perror` function, then exits the program using `exit` function.
+
+7. `int main(int argc, char *argv[])` is the main function of the program. `argc` is the number of command-line arguments, and `argv` is an array of pointers to the arguments.
+
+8. `int sockfd, portno, n;` declares three integer variables: `sockfd` for the socket file descriptor, `portno` for the port number, and `n` for the number of characters written or read.
+
+9. `struct sockaddr_in serv_addr;` declares a structure for the server address.
+
+10. `struct hostent *server;` declares a pointer to a structure that represents a host entry in the database.
+
+11. `char buffer[256];` declares a character array of size 256 for storing data.
+
+12. `if (argc < 3)` checks if the number of command-line arguments is less than 3. If so, it prints an error message and exits the program.
+
+13. `portno = atoi(argv[2]);` converts the second command-line argument from a string to an integer and stores it in `portno`.
+
+14. `sockfd = socket(AF_INET, SOCK_STREAM, 0);` creates a socket using the `socket` function and stores the socket file descriptor in `sockfd`.
+
+15. `if (sockfd < 0)` checks if the socket file descriptor is negative. If so, it calls the `error` function with an error message.
+
+16. `server = gethostbyname(argv[1]);` gets the host entry by name using the `gethostbyname` function and stores the pointer to the host entry in `server`.
+
+17. `if (server == NULL)` checks if `server` is a null pointer. If so, it prints an error message and exits the program.
+
+18. `bzero((char *) &serv_addr, sizeof(serv_addr));` sets all the bytes of `serv_addr` to zero using the `bzero` function.
+
+19. `serv_addr.sin_family = AF_INET;` sets the address family of `serv_addr` to AF_INET.
+
+20. `bcopy((char *)server->h_addr, (char *)&serv_addr.sin_addr.s_addr, server->h_length);` copies the host address from `server` to `serv_addr`.
+
+21. `serv_addr.sin_port = htons(portno);` sets the port number of `serv_addr` in network byte order using the `htons` function.
+
+22. `if (connect(sockfd,(struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0)` connects the socket to the server address using the `connect` function. If the return value is negative, it calls the `error` function with an error message.
+
+23. `printf("Please enter the message: ");` prints a prompt for the user to enter a message.
+
+24. `bzero(buffer,256);` sets all the bytes of `buffer` to zero.
+
+25. `fgets(buffer,255,stdin);` reads a line of input from the standard input and stores it in `buffer`.
+
+26. `n = write(sockfd,buffer,strlen(buffer));` writes the contents of `buffer` to the socket using the `write` function and stores the number of characters written in `n`.
+
+27. `if (n < 0)` checks if `n` is negative. If so, it calls the `error` function with an error message.
+
+28. `bzero(buffer,256);` sets all the bytes of `buffer` to zero.
+
+29. `n = read(sockfd,buffer,255);` reads data from the socket into `buffer` using the `read` function and stores the number of characters read in `n`.
+
+30. `if (n < 0)` checks if `n` is negative. If so, it calls the `error` function with an error message.
+
+31. `printf("%s\n",buffer);` prints the contents of `buffer`.
+
+32. `close(sockfd);` closes the socket using the `close` function.
+
+33. `return 0;` returns 0 to indicate successful termination of the program.
+*/

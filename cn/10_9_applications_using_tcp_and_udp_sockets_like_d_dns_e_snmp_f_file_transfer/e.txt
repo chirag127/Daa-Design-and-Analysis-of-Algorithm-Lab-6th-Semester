@@ -1,0 +1,31 @@
+/*
+
+1. `#include <stdio.h>`: This line includes the standard input/output library for C programming.
+2. `#include <string.h>`: This line includes the string library for C programming.
+3. `#include <sys/socket.h>`: This line includes the system socket library for C programming.
+4. `#include <arpa/inet.h>`: This line includes the ARPA Internet library for C programming.
+5. `int main(int argc, char *argv[])`: This line defines the main function of the program. The `argc` argument is the number of arguments passed to the program, and `argv` is an array of pointers to the arguments.
+6. `int socket_desc, client_sock, c, read_size;`: These lines declare four integer variables, `socket_desc`, `client_sock`, `c`, and `read_size`.
+7. `struct sockaddr_in server, client;`: These lines declare two structure variables, `server` and `client`, of type `sockaddr_in`.
+8. `char client_message[2000];`: This line declares a character array `client_message` of size 2000.
+9. `socket_desc = socket(AF_INET, SOCK_STREAM, 0);`: This line creates a socket and returns a socket descriptor. `AF_INET` specifies the address family (IPv4), `SOCK_STREAM` specifies the socket type (TCP), and `0` specifies the protocol.
+10. `if (socket_desc == -1)`: This line checks if the socket creation failed.
+11. `puts("Socket created");`: This line prints "Socket created" if the socket creation was successful.
+12. `server.sin_family = AF_INET;`: This line sets the `sin_family` field of the `server` structure to `AF_INET`.
+13. `server.sin_addr.s_addr = INADDR_ANY;`: This line sets the `sin_addr.s_addr` field of the `server` structure to `INADDR_ANY`, which means the socket will listen on all available network interfaces.
+14. `server.sin_port = htons( 8888 );`: This line sets the `sin_port` field of the `server` structure to `8888` in network byte order.
+15. `if( bind(socket_desc,(struct sockaddr *)&server , sizeof(server)) < 0)`: This line binds the socket to the specified IP address and port.
+16. `puts("bind done");`: This line prints "bind done" if the bind was successful.
+17. `listen(socket_desc , 3);`: This line sets the socket to listen for incoming connections. The second argument, `3`, is the maximum number of connections that can be waiting while the process is handling a previous connection.
+18. `puts("Waiting for incoming connections...");`: This line prints "Waiting for incoming connections...".
+19. `c = sizeof(struct sockaddr_in);`: This line sets the value of `c` to the size of the `sockaddr_in` structure.
+20. `client_sock = accept(socket_desc, (struct sockaddr *)&client, (socklen_t*)&c);`: This line accepts an incoming connection and returns a new socket descriptor for the new connection.
+21. `puts("Connection accepted");`: This line prints "Connection accepted" if the connection was accepted.
+22. `while( (read_size = recv(client_sock , client_message , 2000 , 0)) > 0 )`: This line receives a message from the client and stores it in the `client_message` array. The `recv` function returns the number of bytes received, which is stored in `read_size`. The loop continues as long as `read_size` is greater than 0.
+23. `write(client_sock , client_message , strlen(client_message));`: This line sends the message back to the client.
+24. `if(read_size == 0)`: This line checks if the client disconnected.
+25. `puts("Client disconnected");`: This line prints "Client disconnected" if the client disconnected.
+26. `else if(read_size == -1)`: This line checks if an error occurred while receiving the message.
+27. `perror("recv failed");`: This line prints an error message if an error occurred while receiving the message.
+28. `return 0;`: This line returns 0 to indicate successful completion of the program.
+*/

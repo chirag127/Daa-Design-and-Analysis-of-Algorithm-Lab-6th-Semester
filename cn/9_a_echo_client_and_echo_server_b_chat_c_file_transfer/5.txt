@@ -1,0 +1,31 @@
+a. Echo client and echo server b. Chat c. File Transfer
+/*
+ `e sockaddr_in` that stores the server's IP address and port number.
+   - `bind(server_socket, (struct sockaddr*) &server_address, sizeof(server_address))`: associates the socket with the server's IP address and port number.
+   - `listen(server_socket, 5)`: marks the socket as a passive socket, ready to accept incoming connections.
+   - `client_socket = accept(server_socket, NULL, NULL)`: blocks until a client connects and returns a new socket that is used to communicate with the client.
+   - `FILE *file = fopen(file_name, "rb")`: opens the file to be transferred.
+   - `fseek(file, 0, SEEK_END)`: moves the file pointer to the end of the file.
+   - `file_size = ftell(file)`: gets the size of the file.
+   - `rewind(file)`: moves the file pointer back to the beginning of the file.
+   - `send(client_socket, &file_size, sizeof(file_size), 0)`: sends the size of the file to the client.
+   - `while (remaining_data > 0)`: a loop that continues until all the data has been sent.
+      - `bytes_sent = send(client_socket, buffer, buffer_size, 0)`: sends a chunk of the file to the client.
+      - `remaining_data -= bytes_sent`: updates the amount of data left to be sent.
+   - `fclose(file)`: closes the file.
+   - `close(server_socket)`: closes the socket.
+
+2. File client:
+   - `#include <stdio.h>`, `#include <string.h>`, `#include <sys/socket.h>`, `#include <netinet/in.h>`: header files for standard input/output, string handling, sockets, and Internet addresses.
+   - `client_socket = socket(AF_INET, SOCK_STREAM, 0)`: creates a socket of type `AF_INET` (IPv4) and `SOCK_STREAM` (TCP).
+   - `client_address`: a struct of type `sockaddr_in` that stores the server's IP address and port number.
+   - `connect(client_socket, (struct sockaddr*) &client_address, sizeof(client_address))`: connects the socket to the server's IP address and port number.
+   - `recv(client_socket, &file_size, sizeof(file_size), 0)`: receives the size of the file from the server.
+   - `FILE *file = fopen(file_name, "wb")`: creates a file to store the received data.
+   - `while (remaining_data > 0)`: a loop that continues until all the data has been received.
+      - `bytes_received = recv(client_socket, buffer, buffer_size, 0)`: receives a chunk of the file from the server.
+      - `fwrite(buffer, sizeof(char), bytes_received, file)`: writes the received data to the file.
+      - `remaining_data -= bytes_received`: updates the amount of data left to be received.
+   - `fclose(file)`: closes the file.
+   - `close(client_socket)`: closes the socket.
+*/

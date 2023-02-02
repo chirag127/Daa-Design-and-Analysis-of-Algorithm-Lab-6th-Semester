@@ -1,0 +1,40 @@
+/*
+
+
+1. `#include <stdio.h>`: This line includes the header file `stdio.h`, which provides functions for input/output operations in C.
+
+2. `#include <string.h>`: This line includes the header file `string.h`, which provides functions for string manipulation in C.
+
+3. `#define MAX_NODES 100`: This line defines a constant `MAX_NODES` with the value 100.
+
+4. `#define MAX_LINKS 500`: This line defines a constant `MAX_LINKS` with the value 500.
+
+5. `struct Network {...}`: This line defines a structure `Network` to store information about a network. The structure contains three members: 
+  - `nodes`: An integer to store the number of nodes in the network.
+  - `links`: An integer to store the number of links in the network.
+  - `cost[MAX_NODES][MAX_NODES]`: A 2D array of integers to store the cost of each link in the network.
+
+6. `void linkStateRouting(struct Network network) {...}`: This line defines a function `linkStateRouting` that implements the Link State Routing Algorithm. The function takes a structure `network` of type `Network` as an argument.
+
+7. `void floodingRouting(struct Network network) {...}`: This line defines a function `floodingRouting` that implements the Flooding Routing Algorithm. The function takes a structure `network` of type `Network` as an argument.
+
+8. `void distanceVectorRouting(struct Network network) {...}`: This line defines a function `distanceVectorRouting` that implements the Distance Vector Routing Algorithm. The function takes a structure `network` of type `Network` as an argument.
+
+9. `int main() {...}`: This line defines the main function, which is the entry point of the program.
+
+10. `struct Network network;`: This line declares a variable `network` of type `Network`.
+
+11. `memset(network.cost, 0, sizeof(network.cost));`: This line sets all elements of the 2D array `network.cost` to 0.
+
+12. `network.nodes = MAX_NODES;`: This line sets the value of `network.nodes` to `MAX_NODES`.
+
+13. `network.links = MAX_LINKS;`: This line sets the value of `network.links` to `MAX_LINKS`.
+
+14. `linkStateRouting(network);`: This line calls the function `linkStateRouting` with `network` as an argument.
+
+15. `floodingRouting(network);`: This line calls the function `floodingRouting` with `network` as an argument.
+
+16. `distanceVectorRouting(network);`: This line calls the function `distanceVectorRouting` with `network` as an argument.
+
+17. `return 0;`: This line returns 0 from the `main` function, indicating that the program has executed successfully.
+*/

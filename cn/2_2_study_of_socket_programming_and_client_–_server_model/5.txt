@@ -1,0 +1,85 @@
+2. Study of Socket Programming and Client – Server model
+/*
+ 
+
+```
+#include <stdio.h>
+```
+This line means we are going to use a tool that helps us print things on the screen.
+
+```
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <string.h>
+```
+These lines mean we are going to use some extra tools to help us talk to other computers using the internet.
+
+```
+int main(int argc, char *argv[]) {
+```
+This line starts the main part of the program, where we tell the computer what to do.
+
+```
+  int sock = 0, valread;
+```
+This line creates two boxes, `sock` and `valread`, to store numbers.
+
+```
+  struct sockaddr_in serv_addr;
+```
+This line creates a box to store information about the address of the computer we want to talk to.
+
+```
+  char buffer[1024] = {0};
+```
+This line creates a box to store messages we receive from the other computer.
+
+```
+  if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    printf("\n Socket creation error \n");
+    return -1;
+  }
+```
+This line creates a special tool, a socket, that we can use to talk to the other computer. If it fails, it will print an error message.
+
+```
+  serv_addr.sin_family = AF_INET;
+  serv_addr.sin_port = htons(8080);
+```
+This line fills in the address information for the computer we want to talk to.
+
+```
+  if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0) {
+    printf("\nInvalid address/ Address not supported \n");
+    return -1;
+  }
+```
+This line checks if the address of the computer we want to talk to is valid. If it's not, it will print an error message.
+
+```
+  if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+    printf("\nConnection Failed \n");
+    return -1;
+  }
+```
+This line tries to connect to the other computer using the socket. If it fails, it will print an error message.
+
+```
+  send(sock , "Hello from client" , strlen("Hello from client"), 0 );
+  printf("Hello message sent\n");
+```
+This line sends a message "Hello from client" to the other computer. Then it prints a message to say the message was sent.
+
+```
+  valread = read( sock , buffer, 1024);
+  printf("%s\n",buffer );
+```
+This line receives a message from the other computer and stores it in the `buffer` box. Then it prints the message on the screen.
+
+```
+  return 0;
+}
+```
+This line finishes the main part of the program and tells the computer that everything went well.
+*/

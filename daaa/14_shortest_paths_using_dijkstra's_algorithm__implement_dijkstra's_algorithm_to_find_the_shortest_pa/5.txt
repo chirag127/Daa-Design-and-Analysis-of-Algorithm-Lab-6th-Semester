@@ -1,0 +1,4 @@
+Shortest Paths using Dijkstra's Algorithm: Implement Dijkstra's algorithm to find the shortest paths from a given vertex to all other vertices in a weighted connected graph.
+/*
+ This code implements Dijkstra's algorithm, which is used to find the shortest path between two vertices in a weighted graph. The main function creates a 2D array `graph` that represents the graph, and calls the `dijkstra` function to find the shortest path from vertex 0 to all other vertices. The `dijkstra` function uses the `minDistance` function to find the vertex with the minimum distance that has not yet been included in the shortest path tree. The function then updates the distances of the vertices that are adjacent to the current vertex if the new distance is shorter than the current distance. Finally, the function prints the distance of each vertex from the source vertex.
+*/

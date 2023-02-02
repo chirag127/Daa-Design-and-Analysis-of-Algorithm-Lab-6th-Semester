@@ -1,0 +1,96 @@
+/*
+ 
+
+```
+#include <stdio.h>
+```
+This line includes the standard input/output library in the code.
+
+```
+#include <sys/socket.h>
+```
+This line includes the header file for the socket library.
+
+```
+#include <arpa/inet.h>
+```
+This line includes the header file for the Internet address library.
+
+```
+#include <unistd.h>
+```
+This line includes the header file for the Unix standard library.
+
+```
+#include <string.h>
+```
+This line includes the header file for the string library.
+
+```
+int main(int argc, char *argv[]) {
+```
+This line declares the main function with two arguments: `argc` and `argv`. `argc` is the number of arguments passed to the program and `argv` is an array of pointers to the arguments.
+
+```
+  int sock = 0, valread;
+```
+This line declares two integer variables, `sock` and `valread`. `sock` is used to store the socket descriptor and `valread` is used to store the number of bytes read from the socket.
+
+```
+  struct sockaddr_in serv_addr;
+```
+This line declares a `struct` variable `serv_addr` of type `sockaddr_in`. This structure is used to specify the address of the server.
+
+```
+  char buffer[1024] = {0};
+```
+This line declares an array `buffer` of size 1024 and initializes all its elements to 0.
+
+```
+  if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    printf("\n Socket creation error \n");
+    return -1;
+  }
+```
+This line creates a socket using the `socket` function. `AF_INET` specifies the address family as Internet and `SOCK_STREAM` specifies the socket type as stream socket. The third argument is the protocol, which is set to 0. If the socket creation fails, a message is printed and the function returns -1.
+
+```
+  serv_addr.sin_family = AF_INET;
+  serv_addr.sin_port = htons(8080);
+```
+This line sets the `sin_family` field of `serv_addr` to `AF_INET` and the `sin_port` field to 8080, converted to network byte order using the `htons` function.
+
+```
+  if(inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr)<=0) {
+    printf("\nInvalid address/ Address not supported \n");
+    return -1;
+  }
+```
+This line converts the IP address "127.0.0.1" from presentation format to network format and stores it in the `sin_addr` field of `serv_addr` using the `inet_pton` function. If the conversion fails, a message is printed and the function returns -1.
+
+```
+  if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) < 0) {
+    printf("\nConnection Failed \n");
+    return -1;
+  }
+```
+This line connects the socket to the server using the `connect` function. The first argument is the socket descriptor, the second argument is a pointer to the `serv_addr` structure, and the third argument is the size of the `serv_addr` structure. If the connection fails, a message is printed and the function returns -1.
+
+```
+  send(sock , "Hello from client" , strlen("Hello from client"), 0 );
+  printf("Hello message sent\n");
+```
+This line sends a message "Hello from client" to the server using the `send` function. The first argument is the socket descriptor, the second argument is a pointer to the message, the third argument is the length of the message, and the fourth argument is the flags, which is set to 0. After sending the message, a message is printed to confirm that the message was sent.
+
+```
+  valread = read( sock , buffer, 1024);
+  printf("%s\n",buffer );
+```
+This line reads the response from the server into the `buffer` array using the `read` function. The first argument is the socket descriptor, the second argument is a pointer to the `buffer`, and the third argument is the size of the `buffer`. The number of bytes read is stored in the `valread` variable. The response is then printed to the console.
+
+```
+  return 0;
+}
+```
+This line returns 0 from the main function, indicating that the program executed successfully.
+*/

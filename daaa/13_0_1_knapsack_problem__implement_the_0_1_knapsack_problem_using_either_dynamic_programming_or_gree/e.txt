@@ -1,0 +1,91 @@
+/*
+
+
+0/1 Knapsack Problem using Dynamic Programming:
+
+1. `#include<bits/stdc++.h>`: This line includes the standard library for C++.
+
+2. `using namespace std;`: This line specifies to use the standard namespace.
+
+3. `const int N=1e5+5;`: This line defines a constant `N` with the value of `1e5+5`.
+
+4. `int n,m,w[N],v[N],f[N];`: This line declares five integer variables `n`, `m`, `w`, `v`, and `f`. `w` and `v` are arrays with the size of `N`, while `n`, `m`, and `f` are scalar variables.
+
+5. `int main(){`: This line starts the main function.
+
+6. `cin>>n>>m;`: This line inputs `n` and `m` from the user.
+
+7. `for(int i=1;i<=n;i++) cin>>w[i]>>v[i];`: This line inputs `w` and `v` for each item.
+
+8. `for(int i=1;i<=n;i++){`: This line starts a for loop for the `i`th item.
+
+9. `for(int j=m;j>=w[i];j--){`: This line starts a for loop for the `j`th weight.
+
+10. `f[j]=max(f[j],f[j-w[i]]+v[i]);`: This line updates the `f[j]` by taking the maximum value between `f[j]` and `f[j-w[i]]+v[i]`.
+
+11. `}`: This line closes the inner for loop.
+
+12. `}`: This line closes the outer for loop.
+
+13. `cout<<f[m];`: This line outputs the maximum value that can be obtained with weight `m`.
+
+14. `return 0;`: This line returns 0 to indicate that the program terminates successfully.
+
+15. `}`: This line closes the main function.
+
+0/1 Knapsack Problem using Greedy Method:
+
+1. `#include<bits/stdc++.h>`: This line includes the standard library for C++.
+
+2. `using namespace std;`: This line specifies to use the standard namespace.
+
+3. `const int N=1e5+5;`: This line defines a constant `N` with the value of `1e5+5`.
+
+4. `int n,m,w[N],v[N];`: This line declares four integer variables `n`, `m`, `w`, and `v`. `w` and `v` are arrays with the size of `N`, while `n` and `m` are scalar variables.
+
+5. `bool cmp(int a,int b){`: This line declares a function `cmp` that takes two integer arguments `a` and `b` and returns a boolean value.
+
+6. `return 1.0*v[a]/w[a]>1.0*v[b]/w[b];`: This line returns `true` if `v[a]/w[a]` is greater than `v[b]/w[b]` and `false` otherwise.
+
+7. `int main(){`: This line starts the main function.
+
+8. `cin>>n>>m;`: This line inputs `n` and `m` from the user.
+
+9. `for(int i=1;i<=n;i++) cin>>w[i]>>v[i];`: This line inputs `w` and `v` for each item.
+
+10. `vector<int> id;`: This line declares a vector `id` of integers.
+
+11. `for(int i=1;i<=n;i++) id.push_back(i);`: This line adds `i` to the end of the vector `id` for each item.
+
+12. `sort(id.begin(),id.end(),cmp);`: This line sorts the vector `id` in ascending order based on the function `cmp`.
+
+13. `int ans=0;`: This line declares an integer variable `ans` and initializes it to 0.
+
+14. `for(int i=0;i<n;i++){`: This line starts a for loop for each item in the sorted vector `id`.
+
+15. `int j=id[i];`: This line declares an integer variable `j` and assigns it the value of `id[i]`.
+
+16. `if(m>=w[j]){`: This line checks if the remaining weight `m` is greater than or equal to the weight of the `j`th item.
+
+17. `ans+=v[j];`: This line increases the value of `ans` by the value of the `j`th item.
+
+18. `m-=w[j];`: This line decreases the remaining weight `m` by the weight of the `j`th item.
+
+19. `}`: This line closes the if statement.
+
+20. `else{`: This line starts the else statement.
+
+21. `ans+=1.0*v[j]/w[j]*m;`: This line increases the value of `ans` by the fractional value of the `j`th item that can be taken.
+
+22. `break;`: This line breaks out of the for loop.
+
+23. `}`: This line closes the else statement.
+
+24. `}`: This line closes the for loop.
+
+25. `cout<<ans;`: This line outputs the maximum value that can be obtained with weight `m`.
+
+26. `return 0;`: This line returns 0 to indicate that the program terminates successfully.
+
+27. `}`: This line closes the main function.
+*/

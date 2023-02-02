@@ -1,0 +1,85 @@
+10. Study of Network simulator (NS).and Simulation of Congestion Control Algorithms using NS
+/*
+  
+```
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <queue>
+#include <vector>
+#include "ns2.h"
+```
+This part is like bringing in some toys to play with.
+
+```
+#define MAX_PACKET_SIZE 1500
+#define MAX_QUEUE_SIZE 100
+#define MAX_SIMULATION_TIME 10000
+```
+This part sets some rules for the game, like how big the toy can be, how many toys can be in the box, and how long the game will last.
+
+```
+struct packet {
+  int size;
+  int arrival_time;
+};
+```
+This part creates a new toy with two parts: `size` and `arrival_time`.
+
+```
+int main() {
+  std::queue<packet> q;
+  std::vector<double> delay;
+  int current_time = 0;
+  int packet_loss = 0;
+  int total_packets = 0;
+```
+This part starts the game. We have a box `q` to put the toys in, a list `delay` to keep track of how long each toy took to get out of the box, and three counters: `current_time` to keep track of how long the game has been going, `packet_loss` to keep track of how many toys got lost because the box was full, and `total_packets` to keep track of how many toys were made in total.
+
+```
+  while (current_time < MAX_SIMULATION_TIME) {
+    if (q.size() < MAX_QUEUE_SIZE) {
+      packet p;
+      p.size = rand() % MAX_PACKET_SIZE + 1;
+      p.arrival_time = current_time;
+      q.push(p);
+      total_packets++;
+    } else {
+      packet_loss++;
+    }
+```
+This part makes new toys and puts them in the box. If there is room in the box, a new toy is made with a random size and the time it was made is recorded. The toy is then put in the box. If the box is full, the toy is lost and the `packet_loss` counter is increased.
+
+```
+    if (q.size() > 0) {
+      packet p = q.front();
+      q.pop();
+      delay.push_back(current_time - p.arrival_time);
+    }
+
+    current_time++;
+  }
+```
+This part takes the toys out of the box and records how long it took for each toy to get out. If there is a toy in the box, it is taken out and the time is recorded. The `current_time` counter is increased at the end of each iteration.
+
+```
+  double avg_delay = 0;
+  for (int i = 0; i < delay.size(); i++) {
+    avg_delay += delay[i];
+  }
+  avg_delay /= delay.size();
+```
+This part calculates the average time it took for the toys to get out of the box.
+
+```
+  printf("Average delay: %f\n", avg_delay);
+  printf("Packet loss rate: %f\n", (double) packet_loss / total_packets);
+```
+This part prints the average time and the rate of lost toys.
+
+```
+  return 0;
+}
+```
+This part ends the game and says it was a success!
+*/

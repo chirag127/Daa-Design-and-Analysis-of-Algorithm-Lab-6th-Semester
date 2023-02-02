@@ -1,0 +1,78 @@
+Minimum Cost Spanning Tree using Prim's Algorithm: Implement Prim's algorithm to find the minimum cost spanning tree of a connected undirected graph.
+/*
+ 
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+```
+This line lets us use the computer to print things and read things from the keyboard.
+
+```
+#define MAX_VERTICES 100
+#define INF 1000000000
+```
+This line sets a rule that says we can use the word "MAX_VERTICES" to mean 100, and "INF" to mean 1000000000.
+
+```
+int n, m;
+int cost[MAX_VERTICES][MAX_VERTICES];
+bool used[MAX_VERTICES];
+int mincost[MAX_VERTICES];
+```
+These lines make some boxes to store information about our graph. `n` and `m` store the number of dots and lines in the graph. `cost[i][j]` stores the cost of the line between dots `i` and `j`. `used[i]` is a yes/no answer that tells us if dot `i` has already been used in our tree. `mincost[i]` stores the smallest cost of a line that connects a dot not in the tree to dot `i`.
+
+```
+void prim() {
+  for (int i = 0; i < n; i++) {
+    mincost[i] = INF;
+    used[i] = false;
+  }
+
+  mincost[0] = 0;
+  int res = 0;
+```
+This is the start of a plan to find the tree with the smallest cost. We start by putting the biggest number possible in all the `mincost` boxes, and saying that none of the dots have been used yet. Then we set the cost of the first dot to 0, and make a box to store the total cost of the tree.
+
+```
+  while (true) {
+    int v = -1;
+    for (int u = 0; u < n; u++) {
+      if (!used[u] && (v == -1 || mincost[u] < mincost[v])) v = u;
+    }
+```
+This is the start of a loop that we will keep repeating until we can't find any more dots to add to the tree. We look at all the dots that haven't been used yet, and find the one with the smallest cost to add to the tree. We store the dot number in a box called `v`.
+
+```
+    if (v == -1) break;
+    used[v] = true;
+    res += mincost[v];
+```
+If there are no more dots to add, we stop the loop. Otherwise, we mark the dot as used, and add its cost to the total cost of the tree.
+
+```
+    for (int u = 0; u < n; u++) {
+      mincost[u] = min(mincost[u], cost[v][u]);
+    }
+  }
+```
+For every dot that hasn't been used yet, we compare the cost of the line from the new dot in the tree to the cost we already have stored. We keep the smaller one.
+
+```
+  printf("Minimum cost: %d\n", res);
+}
+```
+Finally, we print the total cost of the tree.
+
+```
+int main() {
+  scanf("%d%d", &n, &m);
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      cost[i][j] = INF;
+    }
+  }
+```
+This is the start of the main part of the program. We read the number of dots and lines from the keyboard and put them in the boxes
+*/

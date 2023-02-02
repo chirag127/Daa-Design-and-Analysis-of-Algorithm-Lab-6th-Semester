@@ -1,0 +1,25 @@
+Subset Sum Problem: Implement an algorithm to find a subset of a given set of positive integers whose sum is equal to a given positive integer.
+/*
+
+1. The first line `#include <stdio.h>` is like telling the computer to get ready to use the tools for reading and writing.
+2. The second line `#define MAX_NUMBERS 100` is like setting a rule that the computer should always remember that `MAX_NUMBERS` means 100.
+3. The third line `int numbers[MAX_NUMBERS];` is like telling the computer to make a box called `numbers` that can hold 100 things.
+4. The fourth line `int n, target_sum;` is like telling the computer to make two boxes called `n` and `target_sum` to hold numbers.
+5. The fifth line `int subset_sum(int current_index, int current_sum)` is like telling the computer to make a tool called `subset_sum` that takes two numbers and returns another number.
+6. The sixth line `if (current_sum == target_sum)` is like asking the computer if the number in the box `current_sum` is the same as the number in the box `target_sum`. If it is, the computer should return 1.
+7. The seventh line `if (current_index == n)` is like asking the computer if the number in the box `current_index` is the same as the number in the box `n`. If it is, the computer should return 0.
+8. The eighth line `if (current_sum > target_sum)` is like asking the computer if the number in the box `current_sum` is greater than the number in the box `target_sum`. If it is, the computer should return 0.
+9. The ninth line `return subset_sum(current_index + 1, current_sum + numbers[current_index]) || subset_sum(current_index + 1, current_sum);` is like telling the computer to use the tool `subset_sum` twice and use the result of the tool to decide what to return.
+10. The tenth line `int main()` is like telling the computer to start the main program.
+11. The eleventh line `printf("Enter the number of elements: ");` is like telling the computer to write "Enter the number of elements: " on the screen.
+12. The twelfth line `scanf("%d", &n);` is like telling the computer to wait for the user to type a number and store it in the box `n`.
+13. The thirteenth line `printf("Enter the elements: ");` is like telling the computer to write "Enter the elements: " on the screen.
+14. The fourteenth line `for (int i = 0; i < n; i++)` is like telling the computer to repeat the next step `n` times.
+15. The fifteenth line `scanf("%d", &numbers[i]);` is like telling the computer to wait for the user to type a number and store it in the `i`-th space of the box `numbers`.
+16. The sixteenth line `printf("Enter the target sum: ");` is like telling the computer to write "Enter the target sum: " on the screen.
+17. The seventeenth line `scanf("%d", &target_sum);` is like telling the computer to wait for the user to type a number and store it in the box `target_sum`.
+18. The eighteenth line `if (subset_sum(0, 0))` is like asking the computer to use the tool `subset_sum` with 0 and 0 and see if the result is true.
+19. The nineteenth line `printf("A subset with the target sum exists.\n");` is like telling the computer to write "A subset with the target sum exists." on the screen if the result of the previous step is true.
+20. The twentieth line `printf("No subset with the target sum exists.\n");` is like telling the computer to write "No subset with the target sum exists." on the screen if the result of the previous step is false.
+21. The twenty-first line `return 0;` is like telling the computer to end the main program and return 0.
+*/

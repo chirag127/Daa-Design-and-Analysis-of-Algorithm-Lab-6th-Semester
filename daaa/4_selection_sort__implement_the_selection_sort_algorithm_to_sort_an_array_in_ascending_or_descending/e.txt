@@ -1,0 +1,43 @@
+/*
+
+
+1. `#include <stdio.h>`: This line includes the standard input/output library in the code.
+
+2. `void selectionSort(int arr[], int n, int ascending)`: This line declares a function `selectionSort` which takes an integer array `arr`, its size `n` and a flag `ascending` as inputs. The function doesn't return any value, hence `void`.
+
+3. `int i, j, min_idx;`: These lines declare three integer variables `i`, `j`, and `min_idx`. `i` and `j` are used as loop variables and `min_idx` is used to store the index of the minimum element.
+
+4. `for (i = 0; i < n-1; i++)`: This line starts a for loop that iterates from 0 to `n-1`. The loop will run `n-1` times.
+
+5. `min_idx = i;`: This line initializes `min_idx` with the value of `i`.
+
+6. `for (j = i+1; j < n; j++)`: This line starts a nested for loop that iterates from `i+1` to `n-1`. The inner loop will run `n-i-1` times.
+
+7. `if (ascending)`: This line checks if the `ascending` flag is set to true.
+
+8. `if (arr[j] < arr[min_idx])`: This line checks if the current element of the inner loop is less than the minimum element found so far.
+
+9. `min_idx = j;`: If the above condition is true, then this line updates the value of `min_idx` with the current index `j`.
+
+10. `int temp = arr[min_idx];`: This line declares a temporary variable `temp` and initializes it with the value of the minimum element.
+
+11. `arr[min_idx] = arr[i];`: This line swaps the minimum element with the current element of the outer loop.
+
+12. `arr[i] = temp;`: This line completes the swap by assigning the value of `temp` to the current element of the outer loop.
+
+13. `int arr[] = {64, 25, 12, 22, 11};`: This line declares an integer array `arr` and initializes it with five values.
+
+14. `int n = sizeof(arr)/sizeof(arr[0]);`: This line calculates the size of the array `arr` and stores it in `n`.
+
+15. `printf("Original Array: \n");`: This line prints the message "Original Array:" followed by a newline.
+
+16. `for (int i=0; i < n; i++)`: This line starts a for loop that iterates from 0 to `n-1` and prints the elements of the array.
+
+17. `selectionSort(arr, n, 1);`: This line calls the `selectionSort` function with the array `arr`, its size `n`, and the flag `ascending` set to 1 (for ascending order).
+
+18. `printf("Sorted Array in ascending order: \n");`: This line prints the message "Sorted Array in ascending order:" followed by a newline.
+
+19. The last for loop is similar to line 16 and prints the sorted array.
+
+20. `return 0;`: This line returns 0 from the `main` function, indicating a successful termination of the program.
+*/

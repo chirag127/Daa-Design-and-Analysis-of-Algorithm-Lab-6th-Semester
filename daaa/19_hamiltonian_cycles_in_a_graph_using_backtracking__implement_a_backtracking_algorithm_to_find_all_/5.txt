@@ -1,0 +1,4 @@
+Hamiltonian Cycles in a Graph using Backtracking: Implement a backtracking algorithm to find all Hamiltonian cycles in a connected undirected graph.
+/*
+ The code is checking if it's possible to create a path that goes through all the vertices in a graph exactly once (called a Hamiltonian cycle). It does this by checking if each vertex is safe to add to the path and if there is a path from the last vertex to the first vertex.
+*/

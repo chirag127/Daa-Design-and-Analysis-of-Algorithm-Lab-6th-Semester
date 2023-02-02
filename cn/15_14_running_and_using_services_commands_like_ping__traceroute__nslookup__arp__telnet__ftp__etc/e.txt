@@ -1,0 +1,29 @@
+/*
+
+```
+#include <stdio.h> //Includes the standard input/output library
+#include <stdlib.h> //Includes the standard library functions
+#include <string.h> //Includes the string library functions
+
+int main(int argc, char *argv[]) //Main function with two arguments: the number of command line arguments and an array of character pointers to the arguments
+{
+  char command[100]; //Declares a character array called "command" with a size of 100
+
+  if (argc != 2) //Checks if the number of command line arguments is not equal to 2
+  {
+    printf("Usage: %s <command>\n", argv[0]); //Prints a usage message with the name of the program and the expected command line argument
+    return 1; //Returns 1 to indicate an error
+  }
+
+  strcpy(command, argv[1]); //Copies the second command line argument (the command) into the "command" array
+
+  if (system(command) == -1) //Calls the system function with the "command" argument and checks if the return value is -1
+  {
+    perror("system"); //Prints an error message with the "system" string
+    return 1; //Returns 1 to indicate an error
+  }
+
+  return 0; //Returns 0 to indicate success
+}
+```
+*/

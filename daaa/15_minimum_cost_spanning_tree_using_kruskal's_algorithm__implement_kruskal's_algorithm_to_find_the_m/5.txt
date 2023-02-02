@@ -1,0 +1,34 @@
+Minimum Cost Spanning Tree using Kruskal's Algorithm: Implement Kruskal's algorithm to find the minimum cost spanning tree of a connected undirected graph. Use union-find algorithms in your program.
+/*
+ 
+
+1. #include<stdio.h>, #include<stdlib.h>, #include<string.h> 
+   - These are helper tools that the computer uses to understand what it needs to do. 
+
+2. struct Edge { int src, dest, weight; };
+   - This is like a blueprint for a line that connects two points. The line has a starting point, an ending point, and a weight.
+
+3. struct Graph { int V, E; struct Edge* edge; };
+   - This is like a blueprint for a bunch of lines. It has two pieces of information: how many starting and ending points there are (V), and how many lines there are (E).
+
+4. struct Graph* createGraph(int V, int E) 
+   - This is a function that makes a graph with V starting/ending points and E lines. It uses a helper tool called malloc to make sure there's enough space in the computer's memory to store the graph.
+
+5. int find(int parent[], int i)
+   - This function helps find the parent of a node in the union-find algorithm. If the node has a parent, it returns the parent. If it doesn't have a parent, it returns the node itself.
+
+6. void Union(int parent[], int x, int y)
+   - This function helps union two nodes in the union-find algorithm. It makes one node the parent of the other.
+
+7. int isCycle(struct Graph* graph) 
+   - This function checks if the graph has any cycles (a cycle is when a line starts and ends at the same point). It uses the union-find algorithm to help check for cycles. If there's a cycle, it returns 1. If there's no cycle, it returns 0.
+
+8. int cmp(const void* a, const void* b) 
+   - This function sorts the lines in the graph by their weight (how heavy they are). It's used as a helper tool for the qsort function.
+
+9. void KruskalMST(struct Graph* graph)
+   - This function finds the best way to connect all the points with lines so that the total weight of the lines is as small as possible. It sorts the lines by weight, then adds lines to the answer while making sure there are no cycles.
+
+10. int main() 
+   - This is the main part of the program. It makes a graph with 4 starting/ending points and 5 lines, then calls the KruskalMST function to find the best way to connect all the points. Finally, it prints the lines in the best way to connect all the points.
+*/

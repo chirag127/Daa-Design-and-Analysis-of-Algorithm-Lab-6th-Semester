@@ -1,0 +1,99 @@
+/*
+
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+```
+
+These are header files that are included in the code. `<stdio.h>` is the standard input/output library in C, `<stdlib.h>` is the standard library in C, and `<limits.h>` is used to define the maximum and minimum values of different data types.
+
+```
+#define V 9
+```
+
+This line defines a constant named `V` with a value of 9. This constant is used to represent the number of vertices in the graph.
+
+```
+int minDistance(int dist[], bool sptSet[])
+{
+    int min = INT_MAX, min_index;
+ 
+    for (int v = 0; v < V; v++)
+        if (sptSet[v] == false && dist[v] <= min)
+            min = dist[v], min_index = v;
+ 
+    return min_index;
+}
+```
+
+`minDistance` is a function that takes two arrays as input, `dist` and `sptSet`. `dist` is an array that stores the minimum distance of each vertex from the source vertex, and `sptSet` is a boolean array that keeps track of the vertices that have been included in the shortest path tree. 
+
+The function initializes `min` to `INT_MAX` and `min_index` to 0. It then loops through all the vertices and finds the vertex with the minimum distance that has not yet been included in the shortest path tree. This is done using the `if` statement. If the condition is true, the function updates the value of `min` and `min_index`. Finally, the function returns `min_index`.
+
+```
+void dijkstra(int graph[V][V], int src)
+{
+    int dist[V];
+    bool sptSet[V];
+ 
+    for (int i = 0; i < V; i++)
+        dist[i] = INT_MAX, sptSet[i] = false;
+ 
+    dist[src] = 0;
+ 
+    for (int count = 0; count < V - 1; count++) {
+        int u = minDistance(dist, sptSet);
+ 
+        sptSet[u] = true;
+ 
+        for (int v = 0; v < V; v++)
+ 
+            if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX
+                && dist[u] + graph[u][v] < dist[v])
+                dist[v] = dist[u] + graph[u][v];
+    }
+ 
+    printf("Vertex Distance from Source\n");
+    for (int i = 0; i < V; i++)
+        printf("%d \t\t %d\n", i, dist[i]);
+}
+```
+
+`dijkstra` is the main function that implements Dijkstra's algorithm. It takes two inputs, a 2-D array `graph` that represents the graph and an integer `src` that represents the source vertex.
+
+The function initializes two arrays, `dist` and `sptSet`, with the same steps as in the `minDistance` function. The distance of the source vertex is set to 0, and all other vertices are set to `INT_MAX`.
+
+The function then repeats the following steps `V-1` times:
+
+1. Find the vertex with the minimum distance that has not yet been included in the shortest path tree. This is done using the `minDistance` function.
+
+2. Mark the vertex as included in the shortest path tree.
+
+3. For all the vertices that are not yet included in the shortest path tree and are adjacent to the current vertex, update their distances if the new distance is shorter than the current distance. This is done using the `if` statement.
+
+Finally, the function prints the distance of each vertex from the source vertex.
+
+```
+int main()
+{
+    int graph[V][V] = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
+                       {4, 0, 8, 0, 0, 0, 0, 11, 0},
+                       {0, 8, 0, 7, 0, 4, 0, 0, 2},
+                       {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                       {0, 0, 0, 9, 0, 10, 0, 0, 0},
+                       {0, 0, 4, 14, 10, 0, 2, 0, 0},
+                       {0, 0, 0, 0, 0, 2, 0, 1, 6},
+                       {8, 11, 0, 0, 0, 0, 1, 0, 7},
+                       {0, 0, 2, 0, 0, 0, 6, 7, 0}
+                      };
+ 
+    dijkstra(graph, 0);
+ 
+    return 0;
+}
+```
+
+`main` is the entry point of the program. It initializes a 2-D array `graph` that represents the graph and calls the `dijkstra` function with the `graph` array and the source vertex 0. Finally, the function returns 0.
+*/

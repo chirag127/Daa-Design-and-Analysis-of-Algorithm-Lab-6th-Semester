@@ -1,0 +1,22 @@
+/*
+ 
+
+1. `#include <stdio.h>`: This line includes the standard input/output library in the program.
+2. `#include <string.h>`: This line includes the string library in the program.
+3. `int main()`: This line defines the main function, which is the entry point of the program.
+4. `char device[10];`: This line declares a character array of size 10 to store the device type entered by the user.
+5. `printf("Enter the device type (router, hub, switch): ");`: This line prints a prompt asking the user to enter the device type.
+6. `scanf("%s", device);`: This line reads the device type entered by the user and stores it in the `device` array.
+7. `if (strcmp(device, "router") == 0)`: This line checks if the device type entered by the user is "router" using the `strcmp` function. If the comparison is equal to 0, it means the strings are equal.
+8. `printf("Configuring router...\n");`: This line prints a message indicating that the router is being configured.
+9. `// code to configure router`: This line is a comment indicating where the code to configure the router should be added.
+10. `else if (strcmp(device, "hub") == 0)`: This line checks if the device type entered by the user is "hub".
+11. `printf("Configuring hub...\n");`: This line prints a message indicating that the hub is being configured.
+12. `// code to configure hub`: This line is a comment indicating where the code to configure the hub should be added.
+13. `else if (strcmp(device, "switch") == 0)`: This line checks if the device type entered by the user is "switch".
+14. `printf("Configuring switch...\n");`: This line prints a message indicating that the switch is being configured.
+15. `// code to configure switch`: This line is a comment indicating where the code to configure the switch should be added.
+16. `else`: This line is executed if the device type entered by the user is not "router", "hub", or "switch".
+17. `printf("Invalid device type\n");`: This line prints a message indicating that the device type entered by the user is invalid.
+18. `return 0;`: This line returns 0 to indicate that the program has executed successfully.
+*/

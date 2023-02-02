@@ -1,0 +1,6 @@
+8. Applications using TCP Sockets like
+/*
+ 
+
+I need you to give me the code first so I can explain it to you. Think of it like a recipe, I can't make a cake without the ingredients and instructions!
+*/

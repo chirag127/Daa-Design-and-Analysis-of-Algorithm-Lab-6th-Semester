@@ -1,0 +1,61 @@
+/*
+
+
+1. `#include <stdio.h>`: This line includes the header file `stdio.h` which contains functions for input and output operations in C.
+
+2. `void quickSort(int arr[], int low, int high)`: This line declares the function `quickSort` which takes an integer array `arr`, and two integer parameters `low` and `high`. The function returns nothing (`void`).
+
+3. `if (low < high)`: This line checks if `low` is less than `high`. If `low` is less than `high`, the code inside the `if` block will be executed. If not, the function will return.
+
+4. `pivot = low;`: This line sets the value of `pivot` to `low`.
+
+5. `i = low;`: This line sets the value of `i` to `low`.
+
+6. `j = high;`: This line sets the value of `j` to `high`.
+
+7. `while (i < j)`: This line starts a while loop that continues until `i` is not less than `j`.
+
+8. `while (arr[i] <= arr[pivot] && i <= high)`: This line starts a while loop that continues until `arr[i]` is not less than or equal to `arr[pivot]` and `i` is not greater than `high`. The value of `i` is incremented inside the loop.
+
+9. `while (arr[j] > arr[pivot] && j >= low)`: This line starts a while loop that continues until `arr[j]` is not greater than `arr[pivot]` and `j` is not less than or equal to `low`. The value of `j` is decremented inside the loop.
+
+10.  `if (i < j)`: This line checks if `i` is less than `j`. If `i` is less than `j`, the code inside the `if` block will be executed.
+
+11. `temp = arr[i];`: This line sets the value of `temp` to `arr[i]`.
+
+12. `arr[i] = arr[j];`: This line sets the value of `arr[i]` to `arr[j]`.
+
+13. `arr[j] = temp;`: This line sets the value of `arr[j]` to `temp`.
+
+14. `temp = arr[j];`: This line sets the value of `temp` to `arr[j]`.
+
+15. `arr[j] = arr[pivot];`: This line sets the value of `arr[j]` to `arr[pivot]`.
+
+16. `arr[pivot] = temp;`: This line sets the value of `arr[pivot]` to `temp`.
+
+17. `quickSort(arr, low, j - 1);`: This line calls the `quickSort` function recursively with the array `arr`, `low` as the first parameter, and `j - 1` as the second parameter.
+
+18. `quickSort(arr, j + 1, high);`: This line calls the `quickSort` function recursively with the array `arr`, `j + 1` as the first parameter, and `high` as the second parameter.
+
+19. `int arr[100], n, i;`: This line declares three integer variables: `arr` is an array of size 100, `n` and `i`.
+
+20. `printf("Enter number of elements: ");`: This line prints the message "Enter number of elements: " to the console.
+
+21. `scanf("%d", &n);`: This line reads an integer value from the user and stores it in `n`.
+
+22. `printf("Enter elements: ");`: This line prints the message "Enter elements: " to the console.
+
+23. `for (i = 0; i < n; i++)`: This line starts a for loop that continues until `i` is not less than `n`.
+
+24. `scanf("%d", &arr[i]);`: This line reads an integer value from the user and stores it in `arr[i]`.
+
+25. `quickSort(arr, 0, n - 1);`: This line calls the `quickSort` function with the array `arr`, `0` as the first parameter, and `n - 1` as the second parameter.
+
+26. `printf("Sorted array: ");`: This line prints the message "Sorted array: " to the console.
+
+27. `for (i = 0; i < n; i++)`: This line starts a for loop that continues until `i` is not less than `n`.
+
+28. `printf("%d ", arr[i]);`: This line prints the value of `arr[i]` followed by a space.
+
+29. `return 0;`: This line returns the value `0` from the `main` function.
+*/

@@ -1,0 +1,111 @@
+/*
+
+
+```
+#include <stdio.h> 
+```
+This line includes the standard input-output library in the code.
+
+```
+#define N 8 
+```
+This line defines a constant, N, with the value 8. This constant represents the number of queens and the size of the chessboard.
+
+```
+void printSolution(int board[N][N]) 
+{ 
+    for (int i = 0; i < N; i++) { 
+        for (int j = 0; j < N; j++) 
+            printf(" %d ", board[i][j]); 
+        printf("\n"); 
+    } 
+} 
+```
+This function, `printSolution`, takes a 2D array, `board`, as input and prints its elements in a matrix form, with each row in a new line.
+
+```
+bool isSafe(int board[N][N], int row, int col) 
+{ 
+    int i, j; 
+  
+    /* Check this row on left side */
+    for (i = 0; i < col; i++) 
+        if (board[row][i]) 
+            return false; 
+  
+    /* Check upper diagonal on left side */
+    for (i = row, j = col; i >= 0 && j >= 0; i--, j--) 
+        if (board[i][j]) 
+            return false; 
+  
+    /* Check lower diagonal on left side */
+    for (i = row, j = col; j >= 0 && i < N; i++, j--) 
+        if (board[i][j]) 
+            return false; 
+  
+    return true; 
+} 
+```
+This function, `isSafe`, takes a 2D array `board`, an integer `row` and an integer `col` as input. It checks if it is safe to place a queen in the cell represented by `row` and `col` by checking if there are any attacking queens in the same row, upper diagonal or lower diagonal. If there are no attacking queens, it returns `true`, otherwise it returns `false`.
+
+```
+bool solveNQUtil(int board[N][N], int col) 
+{ 
+    /* base case: If all queens are placed 
+    then return true */
+    if (col >= N) 
+        return true; 
+  
+    /* Consider this column and try placing 
+    this queen in all rows one by one */
+    for (int i = 0; i < N; i++) { 
+        if (isSafe(board, i, col)) { 
+            /* Place this queen in board[i][col] */
+            board[i][col] = 1; 
+  
+            /* recur to place rest of the queens */
+            if (solveNQUtil(board, col + 1)) 
+                return true; 
+  
+            /* If placing queen in board[i][col 
+            doesn't lead to a solution then 
+            remove queen from board[i][col] */
+            board[i][col] = 0; // BACKTRACK 
+        } 
+    } 
+  
+    /* if the queen can not be placed in any row in 
+        this column col then return false */
+    return false; 
+} 
+```
+This function, `solveNQUtil` is a recursive function that solves the N-Queen problem. It takes a 2D array `board` and an integer `col` as input. The function starts placing queens in the column `col`. If all the queens are placed, it returns `true`. If not, it tries placing the queen in all the rows of the current column `col`. If it is safe to place the queen in a row, it places it and then calls the function recursively for the next column. If it is not possible to place the queen in any row of the current column, it removes the queen from the current cell and returns `false`. This process continues until all the queens are placed.
+
+```
+bool solveNQ() 
+{ 
+    int board[N][N] = { { 0, 0, 0, 0 }, 
+                        { 0, 0, 0, 0 }, 
+                        { 0, 0, 0, 0 }, 
+                        { 0, 0, 0, 0 } }; 
+  
+    if (solveNQUtil(board, 0) == false) { 
+        printf("Solution does not exist"); 
+        return false; 
+    } 
+  
+    printSolution(board); 
+    return true; 
+} 
+```
+This function, `solveNQ`, initializes a 2D array `board` with all values as 0 and calls the function `solveNQUtil` to solve the N-Queen problem. If the function `solveNQUtil` returns `false`, it means that no solution exists and the function prints "Solution does not exist". If the function `solveNQUtil` returns `true`, it means that a solution exists and the function `printSolution` is called to print the solution.
+
+```
+int main() 
+{ 
+    solveNQ(); 
+    return 0; 
+} 
+```
+This is the main function that calls the function `solveNQ` to solve the N-Queen problem. The function returns 0 after it is executed.
+*/

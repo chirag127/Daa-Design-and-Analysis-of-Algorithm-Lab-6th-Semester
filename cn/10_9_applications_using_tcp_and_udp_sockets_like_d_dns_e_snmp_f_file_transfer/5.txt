@@ -1,0 +1,32 @@
+9. Applications using TCP and UDP Sockets like d. DNS e. SNMP f. File Transfer
+/*
+
+1. This line says to get some tools from the toolbox to use in the program.
+2. This line says to get some string tools from the toolbox to use in the program.
+3. This line says to get some socket tools from the toolbox to use in the program.
+4. This line says to get some internet tools from the toolbox to use in the program.
+5. This line says that the main part of the program starts here. It tells the computer how many things the person using the program wants to give it.
+6. This line says to make 4 empty boxes to use later in the program.
+7. This line says to make 2 empty structures to use later in the program.
+8. This line says to make a big empty box to store messages later in the program.
+9. This line says to make a socket and get its handle to use later.
+10. This line says to check if the socket was made correctly.
+11. This line says "Socket created" if the socket was made correctly.
+12. This line says to set the family of the server structure to internet family.
+13. This line says to set the server structure to listen on any available network.
+14. This line says to set the port number of the server structure to 8888.
+15. This line says to bind the socket to the specified IP address and port.
+16. This line says "bind done" if the bind was successful.
+17. This line says to listen for incoming connections on the socket.
+18. This line says "Waiting for incoming connections...".
+19. This line says to set the value of `c` to the size of the `sockaddr_in` structure.
+20. This line says to accept an incoming connection and get its handle.
+21. This line says "Connection accepted" if the connection was accepted.
+22. This line says to receive messages from the client and store it in the big empty box. The loop continues as long as there is a message to receive.
+23. This line says to send the message back to the client.
+24. This line says to check if the client has disconnected.
+25. This line says "Client disconnected" if the client disconnected.
+26. This line says to check if there was an error while receiving the message.
+27. This line says to print an error message if there was an error while receiving the message.
+28. This line says the program is done and everything was successful.
+*/

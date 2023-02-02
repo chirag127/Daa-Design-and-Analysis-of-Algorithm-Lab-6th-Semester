@@ -1,0 +1,4 @@
+17.Socket programming using UDP and TCP (e.g., simple DNS, data & time client/server, echo client/server, iterative & concurrent servers)
+/*
+ This code is a simple UDP server that listens on a socket and sends back any incoming data to the sender.
+*/

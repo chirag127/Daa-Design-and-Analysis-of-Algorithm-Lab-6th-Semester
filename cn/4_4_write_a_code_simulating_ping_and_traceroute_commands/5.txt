@@ -1,0 +1,22 @@
+4. Write a code simulating PING and TRACEROUTE commands
+/*
+
+
+This code is like making a phone call to a computer. To make the call, we need to tell the computer what type of phone call we want to make, and what number to call. 
+
+The first part of the code is like getting ready to make the call. It includes all the instructions the computer needs to know how to make the call. 
+
+The second part of the code is like checking if we have the right number to call. If we don't have the right number, the computer will tell us and we need to try again. 
+
+The third part of the code is like setting up the phone call. We tell the computer what type of call we want to make and what number to call. 
+
+The fourth part of the code is like actually making the call. If anything goes wrong, the computer will tell us. 
+
+The fifth part of the code is like sending a message to the computer we are calling. 
+
+The sixth part of the code is like waiting for the computer to send a message back to us. 
+
+The seventh part of the code is like hanging up the phone after the call is done. 
+
+The eighth part of the code is like telling the computer that the call is finished and everything is okay.
+*/

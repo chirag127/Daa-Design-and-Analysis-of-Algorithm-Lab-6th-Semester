@@ -1,0 +1,22 @@
+14. Running and using services/commands like ping, traceroute, nslookup, arp, telnet, ftp, etc.
+/*
+ 
+```
+This code is like a magic trick. You give it a command and it makes it happen on the computer! 
+
+First, it gets some tools from the library to help it do the trick. 
+
+Then it has a special place called "main" where the magic happens. It has two helpers, "argc" and "argv". 
+
+It makes a box called "command" to store the command you give it. 
+
+It checks if you gave it the right number of helpers, just one command. If not, it tells you how to give the right helpers. 
+
+It puts the command you gave it into the "command" box. 
+
+Then it does the magic by calling the "system" function with the command in the box. 
+
+If the magic didn't work, it tells you there was a problem. 
+
+Finally, it tells you if the magic was a success or not.
+*/

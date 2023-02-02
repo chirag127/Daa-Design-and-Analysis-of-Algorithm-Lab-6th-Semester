@@ -1,0 +1,39 @@
+/*
+
+
+Line by line explanation:
+
+1. `#include<stdio.h>`: This line includes the standard input/output library in the program.
+
+2. `#include<stdbool.h>`: This line includes the standard boolean library in the program.
+
+3. `#define V 5`: This line defines the constant `V` to be equal to `5`. This constant is used to define the number of vertices in the graph.
+
+4. `void printSolution(int path[])`: This line declares a function `printSolution` that takes an integer array `path` as an argument and returns no value.
+
+5. `bool isSafe(int v, bool graph[V][V], int path[], int pos)`: This line declares a function `isSafe` that takes four arguments: an integer `v`, a 2-dimensional boolean array `graph`, an integer array `path`, and an integer `pos`. The function returns a boolean value.
+
+6. `if (graph[path[pos-1]][v] == 0)`: This line checks if the vertex `v` is an adjacent vertex of the previously added vertex. If the value of `graph[path[pos-1]][v]` is equal to `0`, the function returns `false`.
+
+7. `for (int i = 0; i < pos; i++)`: This line starts a for loop that runs `pos` times. The loop variable `i` is initialized to `0` and incremented by `1` in each iteration.
+
+8. `if (path[i] == v)`: This line checks if the vertex `v` has already been included in the path. If the value of `path[i]` is equal to `v`, the function returns `false`.
+
+9. `return true;`: This line returns `true` if the vertex `v` is safe to be added to the Hamiltonian cycle.
+
+10. `bool hamCycleUtil(bool graph[V][V], int path[], int pos)`: This line declares a function `hamCycleUtil` that takes three arguments: a 2-dimensional boolean array `graph`, an integer array `path`, and an integer `pos`. The function returns a boolean value.
+
+11. `if (pos == V)`: This line checks if all vertices have been included in the Hamiltonian cycle. If the value of `pos` is equal to `V`, the function checks if there is an edge from the last included vertex to the first vertex.
+
+12. `if (graph[path[pos-1]][path[0]] == 1)`: This line checks if there is an edge from the last included vertex to the first vertex. If the value of `graph[path[pos-1]][path[0]]` is equal to `1`, the function returns `true`.
+
+13. `for (int v = 1; v < V; v++)`: This line starts a for loop that runs `V-1` times. The loop variable `v` is initialized to `1` and incremented by `1` in each iteration. The loop tries different vertices as a next candidate in the Hamiltonian cycle.
+
+14. `if (isSafe(v, graph, path, pos))`: This line calls the `isSafe` function to check if the vertex `v` can be added to the Hamiltonian cycle. If the function returns `true`, the vertex `v` is added to the path.
+
+15. `path[pos] = v;`: This line adds the vertex `v` to the path at position `pos`.
+
+16. `if (hamCycleUtil (graph, path, pos+1) == true)`: This line calls the `hamCycleUtil` function recursively to construct the rest of the path. If the function returns `true`, the function `hamCycleUtil` returns `true`.
+
+17.
+*/

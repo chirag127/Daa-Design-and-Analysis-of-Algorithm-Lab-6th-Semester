@@ -1,0 +1,64 @@
+15.Network packet analysis using tools like Wireshark, tcpdump, etc.
+/*
+ 
+
+This code is like a magic tool to capture packets from the internet!
+
+```
+#include <pcap.h>
+```
+This line gets the magic tool kit to capture the packets.
+
+```
+#include <stdio.h>
+```
+This line gets the magic tool to print things on the screen.
+
+```
+void packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_char *packet) {
+  printf("Packet captured with length: %d\n", header->len);
+}
+```
+This is the magic spell that gets casted on each packet that is captured. It tells us how long the packet is.
+
+```
+int main(int argc, char *argv[]) {
+  char *device, errbuf[PCAP_ERRBUF_SIZE];
+  pcap_t *handle;
+```
+This is the main magic spell to capture the packets.
+
+```
+  device = pcap_lookupdev(errbuf);
+  if (device == NULL) {
+    fprintf(stderr, "Couldn't find default device: %s\n", errbuf);
+    return(2);
+  }
+```
+This line finds the device that we want to capture the packets from. If it can't find it, it will show an error message.
+
+```
+  handle = pcap_open_live(device, BUFSIZ, 1, 1000, errbuf);
+  if (handle == NULL) {
+    fprintf(stderr, "Couldn't open device %s: %s\n", device, errbuf);
+    return(2);
+  }
+```
+This line opens the device to start capturing packets. If it can't open it, it will show an error message.
+
+```
+  pcap_loop(handle, -1, packet_handler, NULL);
+```
+This line starts capturing the packets and casting the `packet_handler` magic spell on each packet.
+
+```
+  pcap_close(handle);
+```
+This line closes the device after capturing the packets.
+
+```
+  return(0);
+}
+```
+This line ends the magic spell and says it was successful!
+*/

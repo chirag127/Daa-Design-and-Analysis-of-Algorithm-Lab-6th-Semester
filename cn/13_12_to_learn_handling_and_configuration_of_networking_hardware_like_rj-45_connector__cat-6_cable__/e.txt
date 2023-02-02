@@ -1,0 +1,23 @@
+/*
+ 
+
+1. `#include <stdio.h>`: This line includes the standard input/output library in the program.
+
+2. `int main()`: This line declares the main function which is the entry point of the program.
+
+3. `printf("Networking hardware configuration:\n");`: This line outputs the string "Networking hardware configuration:" followed by a newline character to the console.
+
+4. `printf("1. Verify cable type (CAT-6)\n");`: This line outputs the string "1. Verify cable type (CAT-6)" followed by a newline character to the console.
+
+5. `printf("2. Check for any physical damage to RJ-45 connector\n");`: This line outputs the string "2. Check for any physical damage to RJ-45 connector" followed by a newline character to the console.
+
+6. `printf("3. Strip cable to appropriate length\n");`: This line outputs the string "3. Strip cable to appropriate length" followed by a newline character to the console.
+
+7. `printf("4. Insert wires into connector and arrange in proper order\n");`: This line outputs the string "4. Insert wires into connector and arrange in proper order" followed by a newline character to the console.
+
+8. `printf("5. Use crimping tool to secure the wires in place\n");`: This line outputs the string "5. Use crimping tool to secure the wires in place" followed by a newline character to the console.
+
+9. `printf("6. Test cable connectivity using a cable tester\n");`: This line outputs the string "6. Test cable connectivity using a cable tester" followed by a newline character to the console.
+
+10. `return 0;`: This line returns 0 from the main function, indicating the program has executed successfully.
+*/

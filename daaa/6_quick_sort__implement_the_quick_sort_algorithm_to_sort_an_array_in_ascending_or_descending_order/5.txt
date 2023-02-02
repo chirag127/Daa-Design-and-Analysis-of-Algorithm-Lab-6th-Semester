@@ -1,0 +1,54 @@
+Quick Sort: Implement the quick sort algorithm to sort an array in ascending or descending order.
+/*
+ 
+
+1. `#include <stdio.h>`: This line helps the computer understand how to read and print things on the screen.
+
+2. `void quickSort(int arr[], int low, int high)`: This line makes a plan for sorting numbers in an array.
+
+3. `if (low < high)`: This line checks if there are enough numbers in the array to sort.
+
+4. `pivot = low;`: This line sets the first number in the array as the starting point.
+
+5. `i = low;`: This line sets the first number in the array as the starting point for the first loop.
+
+6. `j = high;`: This line sets the last number in the array as the starting point for the second loop.
+
+7. `while (i < j)`: This line starts a loop that repeats until `i` is not less than `j`.
+
+8. `while (arr[i] <= arr[pivot] && i <= high)`: This line starts a loop that repeats until `arr[i]` is not less than or equal to `arr[pivot]` and `i` is not greater than `high`. The value of `i` is increased inside the loop.
+
+9. `while (arr[j] > arr[pivot] && j >= low)`: This line starts a loop that repeats until `arr[j]` is not greater than `arr[pivot]` and `j` is not less than or equal to `low`. The value of `j` is decreased inside the loop.
+
+10.  `if (i < j)`: This line checks if `i` is less than `j`. If `i` is less than `j`, the code inside the `if` block will be executed.
+
+11. `temp = arr[i];`: This line saves the value of `arr[i]` in a temporary place.
+
+12. `arr[i] = arr[j];`: This line swaps the values of `arr[i]` and `arr[j]`.
+
+13. `arr[j] = temp;`: This line swaps the values of `arr[j]` and the temporary place.
+
+14. `temp = arr[j];`: This line saves the value of `arr[j]` in a temporary place.
+
+15. `arr[j] = arr[pivot];`: This line swaps the values of `arr[j]` and `arr[pivot]`.
+
+16. `arr[pivot] = temp;`: This line swaps the values of `arr[pivot]` and the temporary place.
+
+17. `quickSort(arr, low, j - 1);`: This line calls the `quickSort` plan again with the first part of the array.
+
+18. `quickSort(arr, j + 1, high);`: This line calls the `quickSort` plan again with the second part of the array.
+
+19. `int arr[100], n, i;`: This line makes three places to store numbers: `arr` is a place for 100 numbers, `n` and `i` are places for one number each.
+
+20. `printf("Enter number of elements: ");`: This line asks the user how many numbers they want to sort.
+
+21. `scanf("%d", &n);`: This line reads the number of elements the user wants to sort.
+
+22. `printf("Enter elements: ");`: This line asks the user to enter the numbers they want to sort.
+
+23. `for (i = 0; i < n; i++)`: This line starts a loop that repeats until `i` is not less than `n`.
+
+24. `scanf("%d", &arr[i]);`: This line reads the numbers the user wants to sort.
+
+25. `quickSort(arr, 0, n - 1);`: This line calls the `quickSort` plan with
+*/

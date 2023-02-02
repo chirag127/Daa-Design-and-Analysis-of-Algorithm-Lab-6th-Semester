@@ -1,0 +1,24 @@
+/*
+
+1. `#include <stdio.h>`: This line includes the standard input/output library in the code.
+2. `#include <rpc/rpc.h>`: This line includes the header file for the Remote Procedure Call (RPC) library.
+3. `int main(int argc, char *argv[])`: This line defines the main function of the program, which takes two arguments: `argc` (the number of command-line arguments) and `argv` (an array of strings representing the command-line arguments).
+4. `CLIENT *cl;`: This line declares a pointer to a `CLIENT` structure, which is used to represent a client connection to a remote server.
+5. `char *server;`: This line declares a pointer to a character string, which will store the hostname of the remote server.
+6. `char *result;`: This line declares a pointer to a character string, which will store the result of the remote procedure call.
+7. `if (argc != 2)`: This line checks if the number of command-line arguments is not equal to 2.
+8. `fprintf(stderr, "Usage: %s hostname\n", argv[0]);`: This line prints an error message to the standard error stream indicating the correct usage of the program.
+9. `exit(1);`: This line terminates the program with an exit status of 1, indicating an error.
+10. `server = argv[1];`: This line assigns the second command-line argument (the hostname of the remote server) to the `server` variable.
+11. `cl = clnt_create(server, PROGRAM, VERSION, "tcp");`: This line creates a client connection to the remote server using the `clnt_create` function, which takes four arguments: the hostname of the remote server, the program number, the version number, and the transport protocol (in this case, TCP).
+12. `if (cl == NULL)`: This line checks if the client connection failed to be created.
+13. `clnt_pcreateerror(server);`: This line prints an error message indicating the reason for the failure to the standard error stream.
+14. `exit(1);`: This line terminates the program with an exit status of 1, indicating an error.
+15. `result = remote_procedure_call(cl, ...);`: This line calls the remote procedure using the `remote_procedure_call` function, which takes the client connection and other arguments as input.
+16. `if (result == NULL)`: This line checks if the remote procedure call failed.
+17. `clnt_perror(cl, server);`: This line prints an error message indicating the reason for the failure to the standard error stream.
+18. `exit(1);`: This line terminates the program with an exit status of 1, indicating an error.
+19. `printf("Result: %s\n", result);`: This line prints the result of the remote procedure call to the standard output stream.
+20. `clnt_destroy(cl);`: This line destroys the client connection using the `clnt_destroy` function.
+21. `return 0;`: This line returns 0 from the main function, indicating successful completion of the program.
+*/

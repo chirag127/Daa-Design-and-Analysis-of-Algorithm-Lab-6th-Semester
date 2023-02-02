@@ -1,0 +1,94 @@
+Traveling Salesman Problem: Implement an algorithm to find the shortest possible route that visits a given set of cities and returns to the starting city.
+/*
+ 
+
+Line 1-4: 
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <limits.h>
+```
+These are helpers for the computer to do different things, like printing things on the screen or knowing the biggest number possible.
+
+Line 6-7: 
+```
+#define MAX_CITIES 100
+#define INFINITY INT_MAX
+```
+These are rules for the computer to follow. `MAX_CITIES` means there can only be 100 cities, and `INFINITY` means the biggest number possible.
+
+Line 9-11:
+```
+int dist[MAX_CITIES][MAX_CITIES];
+int cities[MAX_CITIES];
+int n;
+```
+These are things the computer will use to store information. `dist` is a map of the distances between cities, `cities` is a list of the cities, and `n` is the number of cities.
+
+Line 13:
+```
+int tsp(int currCity, int visited, int cost) {
+```
+This is the start of a special function called `tsp` that will solve the Traveling Salesman Problem. It has 3 parts: `currCity` is the city the computer is in, `visited` is a list of cities the computer has been to, and `cost` is the total cost of the trip so far.
+
+Line 14:
+```
+    if (visited == (1 << n) - 1) {
+```
+If the computer has been to all cities, it will return the cost of the trip plus the distance from the current city back to the starting city.
+
+Line 16:
+```
+    int minCost = INFINITY;
+```
+This is a variable that will store the cheapest trip the computer finds. It starts at the biggest number possible.
+
+Line 17-24:
+```
+    for (int i = 0; i < n; i++) {
+        if (!(visited & (1 << i))) {
+            int newCost = cost + dist[currCity][i];
+            int newVisited = visited | (1 << i);
+            int res = tsp(i, newVisited, newCost);
+            minCost = min(minCost, res);
+        }
+    }
+```
+This is the main part of the `tsp` function. For each city `i`, if the computer has not been to it yet, the computer calculates the cost of going to that city and adds it to the total cost. Then, the computer adds that city to the list of cities it has been to and calls the `tsp` function again with the new information. The computer will keep doing this until it has been to all cities, then it will choose the cheapest trip.
+
+Line 26:
+```
+    return minCost;
+```
+This is the end of the `tsp` function. It returns the cheapest trip the computer found.
+
+Line 28:
+```
+int main() {
+```
+This is the start of the `main` function, which is the first thing the computer will run.
+
+Line 29:
+```
+    scanf("%d", &n);
+```
+This reads the number of cities from the computer's input.
+
+Line 30-34:
+```
+    for (int i = 0; i < n; i++) {
+        cities[i] = i;
+        for (int j = 0; j < n; j++) {
+            scanf("%d", &dist[i][j]);
+        }
+    }
+```
+This reads the distances between cities from the computer's input.
+
+Line 36:
+```
+    int cost = tsp(0, 1, 0);
+```
+This calls the `tsp
+*/

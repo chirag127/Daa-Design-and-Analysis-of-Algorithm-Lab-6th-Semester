@@ -1,0 +1,92 @@
+/*
+ 
+```
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <queue>
+#include <vector>
+#include "ns2.h"
+```
+This section includes the required libraries for the code. 
+- `stdio.h` contains the standard input/output library functions.
+- `string.h` contains string handling functions.
+- `math.h` contains mathematical functions.
+- `queue` and `vector` are STL (Standard Template Library) containers.
+- `ns2.h` is the header file for the NS-2 network simulator.
+
+```
+#define MAX_PACKET_SIZE 1500
+#define MAX_QUEUE_SIZE 100
+#define MAX_SIMULATION_TIME 10000
+```
+This section defines some constants to be used throughout the code.
+- `MAX_PACKET_SIZE` is the maximum size of a packet in bytes.
+- `MAX_QUEUE_SIZE` is the maximum size of the queue.
+- `MAX_SIMULATION_TIME` is the maximum simulation time in milliseconds.
+
+```
+struct packet {
+  int size;
+  int arrival_time;
+};
+```
+This section defines a structure `packet` with two members: `size` and `arrival_time`.
+
+```
+int main() {
+  std::queue<packet> q;
+  std::vector<double> delay;
+  int current_time = 0;
+  int packet_loss = 0;
+  int total_packets = 0;
+```
+This section declares the main function. The `queue` `q` is declared to store packets. The `vector` `delay` is declared to store the delay of each packet. `current_time` is the current time of the simulation. `packet_loss` is the number of packets that were lost due to the queue being full. `total_packets` is the total number of packets generated during the simulation.
+
+```
+  while (current_time < MAX_SIMULATION_TIME) {
+    if (q.size() < MAX_QUEUE_SIZE) {
+      packet p;
+      p.size = rand() % MAX_PACKET_SIZE + 1;
+      p.arrival_time = current_time;
+      q.push(p);
+      total_packets++;
+    } else {
+      packet_loss++;
+    }
+```
+This section simulates the arrival of packets. If the queue size is less than `MAX_QUEUE_SIZE`, a new packet is generated with a random size between 1 and `MAX_PACKET_SIZE`, and the arrival time is set to the current time. The packet is then pushed onto the queue. If the queue size is equal to `MAX_QUEUE_SIZE`, the packet is lost and the `packet_loss` counter is incremented.
+
+```
+    if (q.size() > 0) {
+      packet p = q.front();
+      q.pop();
+      delay.push_back(current_time - p.arrival_time);
+    }
+
+    current_time++;
+  }
+```
+This section simulates the departure of packets. If the queue size is greater than 0, the front packet is popped from the queue and its delay is calculated by subtracting its arrival time from the current time. The delay is then pushed onto the `delay` vector. The `current_time` is incremented at the end of each iteration.
+
+```
+  double avg_delay = 0;
+  for (int i = 0; i < delay.size(); i++) {
+    avg_delay += delay[i];
+  }
+  avg_delay /= delay.size();
+```
+This section calculates the average delay of all the packets. The sum of all the delays is divided by the number of packets to get the average.
+
+```
+  printf("Average delay: %f\n", avg_delay);
+  printf("Packet loss rate: %f\n", (double) packet_loss / total_packets);
+```
+This section prints the average delay and the packet loss rate.
+
+```
+  return 0;
+}
+```
+The `main` function returns 0 to indicate a successful execution.
+*/

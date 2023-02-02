@@ -1,0 +1,61 @@
+/*
+
+
+```
+#include <pcap.h>
+```
+This line includes the header file `pcap.h` which provides the necessary functions and data structures for using the libpcap library.
+
+```
+#include <stdio.h>
+```
+This line includes the header file `stdio.h` which provides the standard input/output functions used in the code.
+
+```
+void packet_handler(u_char *args, const struct pcap_pkthdr *header, const u_char *packet) {
+  printf("Packet captured with length: %d\n", header->len);
+}
+```
+This is the definition of the function `packet_handler` which is called for each captured packet. The function takes three arguments: `args` which is not used in this code, `header` which is a pointer to a `pcap_pkthdr` structure containing information about the packet, and `packet` which is a pointer to the raw packet data. The function prints the length of the packet.
+
+```
+int main(int argc, char *argv[]) {
+  char *device, errbuf[PCAP_ERRBUF_SIZE];
+  pcap_t *handle;
+```
+This is the main function which takes two arguments: `argc` the number of command line arguments, and `argv` an array of pointers to the command line arguments. The variables `device`, `errbuf`, and `handle` are declared.
+
+```
+  device = pcap_lookupdev(errbuf);
+  if (device == NULL) {
+    fprintf(stderr, "Couldn't find default device: %s\n", errbuf);
+    return(2);
+  }
+```
+The function `pcap_lookupdev` is called to find the default network device to capture packets on. If it returns `NULL`, an error message is printed to `stderr` and the program returns with a value of `2`.
+
+```
+  handle = pcap_open_live(device, BUFSIZ, 1, 1000, errbuf);
+  if (handle == NULL) {
+    fprintf(stderr, "Couldn't open device %s: %s\n", device, errbuf);
+    return(2);
+  }
+```
+The function `pcap_open_live` is called to open the device for capturing packets. The arguments are the device name, the maximum size of the buffer to use for packets, a flag indicating whether to put the device in promiscuous mode, the timeout in milliseconds for reading packets, and a buffer for error messages. If the function returns `NULL`, an error message is printed to `stderr` and the program returns with a value of `2`.
+
+```
+  pcap_loop(handle, -1, packet_handler, NULL);
+```
+The function `pcap_loop` is called to start capturing packets. The arguments are the handle returned by `pcap_open_live`, the maximum number of packets to capture (`-1` means to capture until an error occurs), a pointer to the `packet_handler` function to call for each packet, and an argument to pass to the `packet_handler` function (`NULL` in this case).
+
+```
+  pcap_close(handle);
+```
+The function `pcap_close` is called to close the capture handle.
+
+```
+  return(0);
+}
+```
+The program returns with a value of `0` indicating success.
+*/

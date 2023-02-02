@@ -1,0 +1,6 @@
+0/1 Knapsack Problem: Implement the 0/1 knapsack problem using either dynamic programming or greedy method.
+/*
+ The two code snippets solve the 0/1 knapsack problem using two different methods, dynamic programming, and greedy algorithm. The problem is a classic optimization problem where you have a set of items with weights and values, and you want to choose a subset of items with maximum total value such that the total weight does not exceed a given limit.
+
+The first code uses dynamic programming, where it calculates the maximum value that can be obtained for each weight from 0 to the given limit. The second code uses a greedy algorithm, where it sorts the items based on the value-to-weight ratio and selects items with the highest ratio until the limit is reached.
+*/

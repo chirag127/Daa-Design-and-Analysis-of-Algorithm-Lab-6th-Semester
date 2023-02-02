@@ -1,0 +1,22 @@
+/*
+
+1. The first line `#include <stdio.h>` is a preprocessor directive to include the standard input/output library.
+2. `#define MAX_N 100` sets a constant `MAX_N` to 100.
+3. `#define INF 1000000` sets a constant `INF` to 1000000.
+4. `int n;` declares a variable `n` of type integer.
+5. `int g[MAX_N][MAX_N];` declares a 2D array `g` of type integer with `MAX_N` rows and `MAX_N` columns.
+6. `void floyd()` is a function that implements the Floyd's algorithm to find all-pairs shortest paths in a weighted graph. It uses three nested loops to update the `g` array.
+7. `int tsp(int u, int S)` is a function that implements a dynamic programming solution to the traveling salesman problem. It takes two arguments `u` and `S`, where `u` is the current vertex and `S` is the set of vertices visited so far.
+8. The `if` statement `if (S == (1 << n) - 1) return g[u][0];` checks if all vertices have been visited. If true, it returns the distance from the current vertex `u` to the starting vertex 0.
+9. `int res = INF;` sets a variable `res` to the constant `INF`.
+10. The `for` loop `for (int v = 0; v < n; v++)` iterates over all vertices.
+11. The `if` statement `if (!(S & (1 << v)))` checks if the `v`th vertex has not been visited.
+12. `res = min(res, g[u][v] + tsp(v, S | (1 << v)));` updates `res` with the minimum distance from the current vertex `u` to the `v`th vertex and the distance from the `v`th vertex to all other vertices.
+13. `return res;` returns the minimum distance.
+14. `int main()` is the main function.
+15. `scanf("%d", &n);` reads the number of vertices `n` from the input.
+16. The nested `for` loop `for (int i = 0; i < n; i++)` and `for (int j = 0; j < n; j++)` reads the weight of each edge from the input and stores it in the `g` array.
+17. `floyd();` calls the `floyd` function to find all-pairs shortest paths.
+18. `printf("%d\n", tsp(0, 1));` prints the minimum distance of the traveling salesman tour starting from vertex 0.
+19. `return 0;` returns 0 to indicate successful execution.
+*/

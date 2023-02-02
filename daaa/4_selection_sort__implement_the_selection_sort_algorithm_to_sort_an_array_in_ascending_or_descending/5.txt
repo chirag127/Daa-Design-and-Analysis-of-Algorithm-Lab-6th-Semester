@@ -1,0 +1,44 @@
+Selection Sort: Implement the selection sort algorithm to sort an array in ascending or descending order.
+/*
+ 
+
+1. `#include <stdio.h>`: This line tells the computer to use a special tool called "standard input/output library" to help us print things on the screen. 
+
+2. `void selectionSort(int arr[], int n, int ascending)`: This line starts a magic spell called "selectionSort". This spell takes three things as inputs: an array of numbers, the size of the array, and a flag. The flag tells the spell if we want the numbers in the array to be sorted in ascending or descending order. 
+
+3. `int i, j, min_idx;`: These lines create three magic wands called `i`, `j`, and `min_idx`. We will use these wands to help us sort the numbers in the array. 
+
+4. `for (i = 0; i < n-1; i++)`: This line starts a loop that will run `n-1` times. Each time the loop runs, we will use wand `i` to select a number from the array. 
+
+5. `min_idx = i;`: This line sets the value of `min_idx` to the value of `i`. 
+
+6. `for (j = i+1; j < n; j++)`: This line starts a nested loop that will run `n-i-1` times. Each time the loop runs, we will use wand `j` to select a different number from the array. 
+
+7. `if (ascending)`: This line checks if the flag is set to true. If it is, we want the numbers in the array to be sorted in ascending order. 
+
+8. `if (arr[j] < arr[min_idx])`: This line checks if the number selected by wand `j` is less than the number selected by wand `min_idx`. 
+
+9. `min_idx = j;`: If the above condition is true, this line sets the value of `min_idx` to the value of `j`. 
+
+10. `int temp = arr[min_idx];`: This line creates a temporary magic wand called `temp` and sets its value to the value of the number selected by wand `min_idx`. 
+
+11. `arr[min_idx] = arr[i];`: This line swaps the value of the number selected by wand `min_idx` with the value of the number selected by wand `i`. 
+
+12. `arr[i] = temp;`: This line swaps the value of the number selected by wand `i` with the value of wand `temp`. 
+
+13. `int arr[] = {64, 25, 12, 22, 11};`: This line creates an array of numbers and sets its values to `64`, `25`, `12`, `22`, and `11`. 
+
+14. `int n = sizeof(arr)/sizeof(arr[0]);`: This line calculates the size of the array and stores it in the variable `n`. 
+
+15. `printf("Original Array: \n");`: This line prints the message "Original Array:" followed by a newline.
+
+16. `for (int i=0; i < n; i++)`: This line starts a loop that will run `n` times. Each time the loop runs, we will print the value of the number at the current position in the array. 
+
+17. `selectionSort(arr, n, 1);`: This line calls the magic spell `selectionSort` and gives it the array of numbers, its size, and the flag set to true as inputs. 
+
+18. `printf("Sorted Array in ascending order: \n");`: This line prints the message "Sorted Array in ascending order:" followed by a newline.
+
+19. The last for loop is similar to line 16 and prints the sorted array.
+
+20. `return 0;`: This line tells the computer that the program has finished running successfully and returns the value 0.
+*/

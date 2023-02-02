@@ -1,0 +1,4 @@
+N Queen Problem using Backtracking: Implement a backtracking algorithm to find all possible solutions to the n-queens problem, which is to place n queens on an nxn chessboard such that no two queens attack each other.
+/*
+ This code is a solution to the N-Queen problem. It is a problem of placing N chess queens on an N×N chessboard so that no two queens threaten each other. The code includes functions to print the solution, check if it is safe to place a queen in a cell, solve the N-Queen problem recursively and call the functions to solve the problem. The main function calls the `solveNQ` function to solve the problem and returns 0 after execution.
+*/

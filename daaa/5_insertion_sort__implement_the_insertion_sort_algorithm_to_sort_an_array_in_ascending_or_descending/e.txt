@@ -1,0 +1,39 @@
+/*
+ 
+
+- `#include <stdio.h>`: This line includes the standard input/output library in the program.
+
+- `void insertionSort(int arr[], int n, int ascending)`: This line defines the function `insertionSort` that takes an integer array `arr`, an integer `n` representing the number of elements in the array, and an integer `ascending` representing the sorting order (ascending = 1, descending = 0). The function sorts the array `arr` in either ascending or descending order.
+
+- `int i, key, j`: These are integer variables used in the sorting algorithm. `i` is the loop variable for the outer loop, `key` is the current element being compared, and `j` is the loop variable for the inner loop.
+
+- `for (i = 1; i < n; i++)`: This is the outer loop of the insertion sort algorithm. It starts from the second element of the array and iterates till the last element.
+
+- `key = arr[i];`: This line sets the value of `key` to the current element of the array.
+
+- `j = i - 1;`: This line sets the value of `j` to `i - 1`, which is the index of the previous element in the array.
+
+- `while (j >= 0 && (ascending ? arr[j] > key : arr[j] < key))`: This is the inner loop of the insertion sort algorithm. It continues as long as `j` is greater than or equal to 0 and the current element at index `j` is greater than `key` in ascending order, or less than `key` in descending order.
+
+- `arr[j + 1] = arr[j];`: This line moves the current element at index `j` one position to the right.
+
+- `j = j - 1;`: This line decrements the value of `j` by 1, moving to the previous element in the array.
+
+- `arr[j + 1] = key;`: This line inserts the value of `key` in its correct position in the array.
+
+- `int arr[] = {12, 11, 13, 5, 6};`: This line defines an integer array `arr` with 5 elements.
+
+- `int n = sizeof(arr) / sizeof(arr[0]);`: This line calculates the number of elements in the array `arr` and stores it in `n`.
+
+- `printf("Given array is \n");`: This line prints the message "Given array is".
+
+- `for (int i = 0; i < n; i++)`: This is a loop that iterates over the elements of the array and prints each element.
+
+- `insertionSort(arr, n, 1);`: This line calls the `insertionSort` function and sorts the array `arr` in ascending order.
+
+- `printf("\nSorted array in ascending order is \n");`: This line prints the message "Sorted array in ascending order is".
+
+- `for (int i = 0; i < n; i++)`: This is a loop that iterates over the elements of the sorted array and prints each element.
+
+- `return 0;`: This line returns 0 to indicate that the program has finished executing successfully.
+*/

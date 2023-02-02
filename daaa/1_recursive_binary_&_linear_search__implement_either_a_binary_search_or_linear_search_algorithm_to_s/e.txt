@@ -1,0 +1,43 @@
+/*
+
+
+1. `#include <stdio.h>`: This line includes the standard input/output library in the code, which provides functions like `printf` and `scanf` for input and output operations.
+
+2. `int binarySearch(int arr[], int l, int r, int x)`: This line declares a function `binarySearch` that takes an integer array `arr`, two integers `l` and `r` representing the leftmost and rightmost indices of the array, and an integer `x` which is the element to be searched in the array. The function returns an integer.
+
+3. `if (r >= l)`: This line checks if the rightmost index `r` is greater than or equal to the leftmost index `l`. If true, the function continues with the search, otherwise, it returns -1 as the element is not present in the array.
+
+4. `int mid = l + (r - l) / 2;`: This line calculates the middle index of the array `arr` by adding the leftmost index `l` and the difference between the rightmost index `r` and the leftmost index `l` divided by 2.
+
+5. `if (arr[mid] == x)`: This line checks if the element at the middle index `mid` is equal to the element to be searched `x`. If true, the function returns the middle index `mid` as the index of the element `x`.
+
+6. `if (arr[mid] > x)`: This line checks if the element at the middle index `mid` is greater than the element to be searched `x`. If true, the function calls itself with the updated parameters `arr`, `l`, `mid - 1`, and `x` to search in the left half of the array.
+
+7. `return binarySearch(arr, mid + 1, r, x);`: This line calls the function itself with the updated parameters `arr`, `mid + 1`, `r`, and `x` to search in the right half of the array.
+
+8. `return -1;`: This line returns -1 if the element is not present in the array.
+
+9. `int linearSearch(int arr[], int n, int x)`: This line declares a function `linearSearch` that takes an integer array `arr` and its size `n`, and an integer `x` which is the element to be searched in the array. The function returns an integer.
+
+10. `int i;`: This line declares an integer `i` to be used as an index in the loop.
+
+11. `for (i = 0; i < n; i++)`: This line starts a loop that runs `n` times, where `n` is the size of the array `arr`. The loop variable `i` starts from 0 and increments by 1 until it reaches `n`.
+
+12. `if (arr[i] == x)`: This line checks if the element at the current index `i` is equal to the element to be searched `x`. If true, the function returns the current index `i` as the index of the element `x`.
+
+13. `return -1;`: This line returns -1 if the element is not present in the array.
+
+14. `int main()`: This line declares the main function of the program.
+
+15. `int arr[] = { 2, 3, 4, 10, 40 };`: This line declares an integer array `arr` with 5 elements.
+
+16. `int n = sizeof(arr) / sizeof(arr[0]);`: This line calculates the size of the array `arr` by dividing the size of the whole array by the size of one element of the array.
+
+17. `int x = 10;`: This line declares an integer `x` as the element to be searched in the array.
+
+18. `int result = binarySearch(arr, 0, n - 1, x);`: This line calls the function `binarySearch` with the parameters `arr`, `0` as the leftmost index, `n - 1` as the rightmost index, and `x` as the element to be searched. The result of the function is stored in the integer variable `result`.
+
+19. `(result == -1) ? printf("Element is not present in array") : printf("Element is present at index %d", result);`: This line uses the ternary operator `?` to check if the result of the function `binarySearch` is equal to -1. If true, the program prints "Element is not present in the array", otherwise, it prints "Element is present at index `result`".
+
+20. `return 0;`: This line returns 0 from the main function, indicating a successful execution of the program.
+*/

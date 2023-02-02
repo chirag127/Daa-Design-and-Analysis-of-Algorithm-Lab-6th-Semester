@@ -1,0 +1,84 @@
+/*
+
+
+```
+#include <stdio.h>
+```
+The line `#include <stdio.h>` is a preprocessor directive that includes the contents of the standard input/output library in the program.
+
+```
+void heapify(int arr[], int n, int i)
+{
+    int largest = i;
+    int l = 2*i + 1;
+    int r = 2*i + 2;
+```
+The function `heapify` takes in an array `arr`, its size `n`, and an index `i` as arguments. It initializes the variable `largest` to `i` and calculates the indices of the left and right children of the node at index `i` as `l` and `r` respectively.
+
+```
+    if (l < n && arr[l] > arr[largest])
+        largest = l;
+
+    if (r < n && arr[r] > arr[largest])
+        largest = r;
+```
+If the left child exists (`l < n`) and its value is greater than the value of the node at `i`, `largest` is updated to `l`. Similarly, if the right child exists (`r < n`) and its value is greater than the value of the node at `i`, `largest` is updated to `r`.
+
+```
+    if (largest != i)
+    {
+        int swap = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = swap;
+
+        heapify(arr, n, largest);
+    }
+}
+```
+If `largest` is not equal to `i`, it means that the value of one of the children is greater than the value of the node at `i`. In this case, the values of the node at `i` and the node at `largest` are swapped and `heapify` is called recursively on the node at `largest` to ensure the heap property is maintained.
+
+```
+void heapSort(int arr[], int n)
+{
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i);
+```
+The function `heapSort` takes in an array `arr` and its size `n` as arguments. It starts from the last non-leaf node (`n / 2 - 1`) and calls `heapify` on each node to build a max heap.
+
+```
+    for (int i=n-1; i>=0; i--)
+    {
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+    }
+}
+```
+In the next step, the function repeatedly swaps the root node (maximum value) with the last node and calls `heapify` on the root node to maintain the max heap property. This process is repeated until all nodes have been removed from the heap and the array is sorted in ascending order.
+
+```
+void printArray(int arr[], int n)
+{
+    for (int i=0; i < n; ++i)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+```
+The function `printArray` takes in an array `arr` and its size `n` as arguments and prints the elements of the array.
+
+```
+int main()
+{
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    heapSort(arr, n);
+
+    printf("Sorted array is \n");
+    printArray(arr, n);
+}
+```
+In the `main` function, an array `arr` is initialized with values and its size is calculated. The `heapSort` function is called on the array and the sorted array is printed using the `printArray` function.
+*/

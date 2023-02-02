@@ -1,0 +1,126 @@
+/*
+
+
+```
+#include<stdio.h> 
+```
+This line includes the standard input/output library in the program.
+
+```
+#include<stdlib.h>
+```
+This line includes the standard library in the program.
+
+```
+void merge(int arr[], int l, int m, int r, int ascending) {
+  int i, j, k;
+```
+This function "merge" takes an integer array "arr", two integer values "l" and "r", and an integer "ascending" as input. "i", "j", and "k" are integer variables declared.
+
+```
+  int n1 = m - l + 1;
+  int n2 =  r - m;
+  int L[n1], R[n2];
+```
+"n1" and "n2" are integer variables that store the size of two arrays "L" and "R" respectively.
+
+```
+  for (i = 0; i < n1; i++)
+    L[i] = arr[l + i];
+```
+This loop copies the elements from the left half of the "arr" into the "L" array.
+
+```
+  for (j = 0; j < n2; j++)
+    R[j] = arr[m + 1+ j];
+```
+This loop copies the elements from the right half of the "arr" into the "R" array.
+
+```
+  i = 0;
+  j = 0;
+  k = l;
+```
+"i", "j", and "k" are initialized to 0, 0, and "l" respectively.
+
+```
+  while (i < n1 && j < n2) {
+    if (ascending == 1) {
+      if (L[i] <= R[j]) {
+        arr[k] = L[i];
+        i++;
+      } else {
+        arr[k] = R[j];
+        j++;
+      }
+    } else {
+      if (L[i] >= R[j]) {
+        arr[k] = L[i];
+        i++;
+      } else {
+        arr[k] = R[j];
+        j++;
+      }
+    }
+    k++;
+  }
+```
+This loop compares the elements of "L" and "R" arrays and merges them into the "arr" array in ascending or descending order based on the value of "ascending".
+
+```
+  while (i < n1) {
+    arr[k] = L[i];
+    i++;
+    k++;
+  }
+```
+This loop copies the remaining elements of the "L" array into the "arr" array.
+
+```
+  while (j < n2) {
+    arr[k] = R[j];
+    j++;
+    k++;
+  }
+}
+```
+This loop copies the remaining elements of the "R" array into the "arr" array.
+
+```
+void mergeSort(int arr[], int l, int r, int ascending) {
+  if (l < r) {
+    int m = l+(r-l)/2;
+    mergeSort(arr, l, m, ascending);
+    mergeSort(arr, m+1, r, ascending);
+    merge(arr, l, m, r, ascending);
+  }
+}
+```
+This function "mergeSort" takes an integer array "arr", two integer values "l" and "r", and an integer "ascending" as input. It implements the merge sort algorithm to sort the "arr" array in ascending or descending order based on the value of "ascending".
+
+```
+int main() {
+  int arr[] = {12, 11, 13, 5, 6, 7};
+  int arr_size = sizeof(arr)/sizeof(arr[0]);
+  int ascending = 1;
+```
+This is the main function of the program. An integer array "arr" is declared with some initial values. "arr_size" is a variable that stores the size of the "arr" array. "ascending" is a variable initialized to 1.
+
+```
+  mergeSort(arr, 0, arr_size - 1, ascending);
+```
+This line calls the "mergeSort" function to sort the "arr" array in ascending order.
+
+```
+  printf("Sorted array is \n");
+  for (int i=0; i < arr_size; i++)
+    printf("%d ", arr[i]);
+```
+This loop prints the sorted "arr" array.
+
+```
+  return 0;
+}
+```
+This line returns 0 from the main function.
+*/

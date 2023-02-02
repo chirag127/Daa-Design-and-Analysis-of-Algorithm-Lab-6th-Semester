@@ -1,0 +1,81 @@
+/*
+ 
+
+Here's a detailed explanation of the code:
+
+```
+#include <stdio.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <string.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include <unistd.h>
+```
+These are the header files included in the code. They provide various functions and constants that are needed for the code to work. 
+
+```
+int main(int argc, char *argv[]) {
+```
+This is the main function of the code. The `argc` and `argv` parameters are used to pass command-line arguments to the program.
+
+```
+  int sockfd;
+  struct sockaddr_in servaddr;
+  struct hostent *host;
+```
+These are the variables declared in the code:
+- `sockfd` is a socket file descriptor.
+- `servaddr` is a structure that holds the address information of the server.
+- `host` is a structure that holds the information about a given host.
+
+```
+  if (argc != 2) {
+    printf("Usage: %s <IP address>\n", argv[0]);
+    return 1;
+  }
+```
+This `if` statement checks if the number of command-line arguments passed to the program is not equal to 2. If it's not equal to 2, it prints a usage message and returns 1.
+
+```
+  host = gethostbyname(argv[1]);
+  if (host == NULL) {
+    printf("Unknown host %s\n", argv[1]);
+    return 1;
+  }
+```
+This code uses the `gethostbyname` function to get information about the host specified in the command-line argument. If the host is unknown, it prints an error message and returns 1.
+
+```
+  bzero(&servaddr, sizeof(servaddr));
+  servaddr.sin_family = AF_INET;
+  servaddr.sin_addr = *((struct in_addr *)host->h_addr);
+  servaddr.sin_port = htons(80);
+```
+This code initializes the `servaddr` structure with the address information of the server. The `bzero` function is used to clear the structure, and the `sin_family` field is set to `AF_INET` to indicate that the address is an IPv4 address. The `sin_addr` field is set to the address of the host, and the `sin_port` field is set to port 80, which is the standard port for HTTP.
+
+```
+  sockfd = socket(AF_INET, SOCK_RAW, IPPROTO_ICMP);
+  if (sockfd < 0) {
+    perror("socket");
+    return 1;
+  }
+```
+This code creates a raw socket using the `socket` function. The `AF_INET` parameter indicates that the socket should be an IPv4 socket, and the `SOCK_RAW` parameter indicates that the socket should be a raw socket. The `IPPROTO_ICMP` parameter indicates that the socket should use the ICMP protocol. If the `socket` function returns a negative value, it means that an error occurred, and the `perror` function is used to print an error message.
+
+```
+  // send PING request
+  // ...
+
+  // receive PING response
+  // ...
+```
+These are comments indicating the location in the code where the PING request and response should be sent and received, respectively.
+
+```
+  close(sockfd);
+  return 0;
+}
+```
+This code closes the socket using the `close` function and returns 0 to indicate that the program has completed successfully.
+*/

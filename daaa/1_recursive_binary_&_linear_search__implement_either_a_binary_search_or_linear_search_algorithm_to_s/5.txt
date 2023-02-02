@@ -1,0 +1,44 @@
+Recursive Binary & Linear Search: Implement either a binary search or linear search algorithm to search for a given element in a sorted array.
+/*
+ 
+
+1. `#include <stdio.h>`: This line is like asking for help from a library. It helps the computer understand what we want to do with printing and reading things.
+
+2. `int binarySearch(int arr[], int l, int r, int x)`: This line makes a new game called "binary search". It takes an array of numbers, two numbers that tell us where to start and end looking in the array, and one more number that we want to find. The game returns a number.
+
+3. `if (r >= l)`: This line checks if the end number is bigger than or equal to the start number. If it is, we keep playing the game, otherwise, we stop and return -1 because the number we want to find is not there.
+
+4. `int mid = l + (r - l) / 2;`: This line finds the middle of the array by adding the start number and the difference between the end number and the start number, and then dividing it by 2.
+
+5. `if (arr[mid] == x)`: This line checks if the number in the middle of the array is the same as the number we want to find. If it is, we return the middle number because that's where the number we want is.
+
+6. `if (arr[mid] > x)`: This line checks if the number in the middle of the array is bigger than the number we want to find. If it is, we play the game again, but this time only looking in the left half of the array.
+
+7. `return binarySearch(arr, mid + 1, r, x);`: This line plays the game again, but this time only looking in the right half of the array.
+
+8. `return -1;`: This line returns -1 if the number we want is not there.
+
+9. `int linearSearch(int arr[], int n, int x)`: This line makes another new game called "linear search". It takes an array of numbers and its size, and the number we want to find. The game returns a number.
+
+10. `int i;`: This line makes a new number called `i`.
+
+11. `for (i = 0; i < n; i++)`: This line starts a loop that runs `n` times, where `n` is the size of the array. The loop makes `i` start from 0 and increases by 1 until it reaches `n`.
+
+12. `if (arr[i] == x)`: This line checks if the number at the current place `i` is the same as the number we want to find. If it is, we return the current place `i` because that's where the number we want is.
+
+13. `return -1;`: This line returns -1 if the number we want is not there.
+
+14. `int main()`: This line starts the main game.
+
+15. `int arr[] = { 2, 3, 4, 10, 40 };`: This line makes an array of numbers with 5 numbers.
+
+16. `int n = sizeof(arr) / sizeof(arr[0]);`: This line finds the size of the array by dividing the whole size of the array by the size of one element of the array.
+
+17. `int x = 10;`: This line makes a number called `x` that we want to find.
+
+18. `int result = binarySearch(arr, 0, n - 1, x);`: This line plays the "binary search" game with the array, 0 as the start number, `n - 1` as the end number, and `x` as the number we want to find. The answer of the game is stored in a number called `result`.
+
+19. `(result == -1) ? printf("Element is not present in array") : printf("Element is present at index %d", result);`: This line checks if the answer of the "binary search" game is -1. If it is, the program prints "The number we want is not in the array". If it's not -1, the program prints "The number we want is at place `result`".
+
+20. `return 0;`: This line ends the main game and says it was a success.
+*/

@@ -1,0 +1,24 @@
+/*
+
+1. `#include <stdio.h>`: This line includes the standard input/output library in the code.
+2. `#define MAX_NUMBERS 100`: This line defines a constant `MAX_NUMBERS` with a value of 100.
+3. `int numbers[MAX_NUMBERS];`: This line declares an array `numbers` with a maximum size of `MAX_NUMBERS`.
+4. `int n, target_sum;`: This line declares two integer variables `n` and `target_sum`. 
+5. `int subset_sum(int current_index, int current_sum)`: This is the definition of a function `subset_sum` that takes two integer parameters: `current_index` and `current_sum`. It returns an integer.
+6. `if (current_sum == target_sum)`: This line checks if the current sum is equal to the target sum. If it is, the function returns 1.
+7. `if (current_index == n)`: This line checks if the current index is equal to `n`. If it is, the function returns 0.
+8. `if (current_sum > target_sum)`: This line checks if the current sum is greater than the target sum. If it is, the function returns 0.
+9. `return subset_sum(current_index + 1, current_sum + numbers[current_index]) || subset_sum(current_index + 1, current_sum);`: This line returns the result of a logical OR operation between two function calls. The first call is to `subset_sum` with `current_index + 1` and `current_sum + numbers[current_index]` as arguments. The second call is to `subset_sum` with `current_index + 1` and `current_sum` as arguments.
+10. `int main()`: This is the definition of the main function.
+11. `printf("Enter the number of elements: ");`: This line prints the prompt "Enter the number of elements: " to the standard output.
+12. `scanf("%d", &n);`: This line reads an integer from the standard input and stores it in the variable `n`.
+13. `printf("Enter the elements: ");`: This line prints the prompt "Enter the elements: " to the standard output.
+14. `for (int i = 0; i < n; i++)`: This line starts a for loop that runs `n` times.
+15. `scanf("%d", &numbers[i]);`: This line reads an integer from the standard input and stores it in the `i`-th element of the `numbers` array.
+16. `printf("Enter the target sum: ");`: This line prints the prompt "Enter the target sum: " to the standard output.
+17. `scanf("%d", &target_sum);`: This line reads an integer from the standard input and stores it in the variable `target_sum`.
+18. `if (subset_sum(0, 0))`: This line calls the `subset_sum` function with `0` and `0` as arguments and checks if the result is true.
+19. `printf("A subset with the target sum exists.\n");`: If the result of the previous line is true, this line prints "A subset with the target sum exists." to the standard output.
+20. `printf("No subset with the target sum exists.\n");`: If the result of the previous line is false, this line prints "No subset with the target sum exists." to the standard output.
+21. `return 0;`: This line returns 0 from the main function.
+*/

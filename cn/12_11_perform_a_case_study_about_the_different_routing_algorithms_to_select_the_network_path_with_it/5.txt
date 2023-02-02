@@ -1,0 +1,41 @@
+11. Perform a case study about the different routing algorithms to select the network path with its optimum and economical during data transfer. i. Link State routing ii. Flooding iii. Distance vector
+/*
+ 
+
+1. `#include <stdio.h>`: This line tells the computer to use a special helper tool called `stdio.h` that helps with input and output.
+
+2. `#include <string.h>`: This line tells the computer to use another special helper tool called `string.h` that helps with strings.
+
+3. `#define MAX_NODES 100`: This line sets a number called `MAX_NODES` to 100. 
+
+4. `#define MAX_LINKS 500`: This line sets a number called `MAX_LINKS` to 500. 
+
+5. `struct Network {...}`: This line sets up a special type of variable called `Network` that has three parts: 
+  - `nodes`: A number to store the number of nodes in the network.
+  - `links`: A number to store the number of links in the network.
+  - `cost[MAX_NODES][MAX_NODES]`: A big table of numbers to store the cost of each link in the network.
+
+6. `void linkStateRouting(struct Network network) {...}`: This line sets up a function called `linkStateRouting` that uses the `Network` type of variable. 
+
+7. `void floodingRouting(struct Network network) {...}`: This line sets up a function called `floodingRouting` that uses the `Network` type of variable. 
+
+8. `void distanceVectorRouting(struct Network network) {...}`: This line sets up a function called `distanceVectorRouting` that uses the `Network` type of variable. 
+
+9. `int main() {...}`: This line sets up the main part of the program that starts running when you turn it on.
+
+10. `struct Network network;`: This line sets up a `Network` type of variable called `network`.
+
+11. `memset(network.cost, 0, sizeof(network.cost));`: This line sets all the numbers in the big table `network.cost` to 0.
+
+12. `network.nodes = MAX_NODES;`: This line sets the `network.nodes` number to `MAX_NODES`.
+
+13. `network.links = MAX_LINKS;`: This line sets the `network.links` number to `MAX_LINKS`.
+
+14. `linkStateRouting(network);`: This line tells the computer to run the `linkStateRouting` function and use the `network` variable.
+
+15. `floodingRouting(network);`: This line tells the computer to run the `floodingRouting` function and use the `network` variable.
+
+16. `distanceVectorRouting(network);`: This line tells the computer to run the `distanceVectorRouting` function and use the `network` variable.
+
+17. `return 0;`: This line tells the computer that the program has finished running successfully.
+*/

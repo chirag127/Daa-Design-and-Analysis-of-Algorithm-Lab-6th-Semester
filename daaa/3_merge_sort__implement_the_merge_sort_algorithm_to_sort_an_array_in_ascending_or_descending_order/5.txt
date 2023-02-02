@@ -1,0 +1,4 @@
+Merge Sort: Implement the merge sort algorithm to sort an array in ascending or descending order.
+/*
+ This code sorts an array of integers in ascending or descending order using the merge sort algorithm. It includes two functions, "merge" and "mergeSort". The "merge" function takes two arrays and merges them into a single sorted array. The "mergeSort" function sorts the original array by repeatedly dividing it into smaller arrays and calling the "merge" function on them. The main function declares an array, calls the "mergeSort" function, and prints the sorted array.
+*/

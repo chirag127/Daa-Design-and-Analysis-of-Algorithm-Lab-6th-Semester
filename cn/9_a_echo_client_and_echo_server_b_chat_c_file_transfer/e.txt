@@ -1,0 +1,61 @@
+/*
+
+
+a. Echo client and echo server:
+
+1. Echo server:
+   - `#include <stdio.h>`, `#include <string.h>`, `#include <sys/socket.h>`, `#include <netinet/in.h>`: header files for standard input/output, string handling, sockets, and Internet addresses.
+   - `server_socket = socket(AF_INET, SOCK_STREAM, 0)`: creates a socket of type `AF_INET` (IPv4) and `SOCK_STREAM` (TCP).
+   - `server_address`: a struct of type `sockaddr_in` that stores the server's IP address and port number.
+   - `bind(server_socket, (struct sockaddr*) &server_address, sizeof(server_address))`: associates the socket with the server's IP address and port number.
+   - `listen(server_socket, 5)`: marks the socket as a passive socket, ready to accept incoming connections.
+   - `client_socket = accept(server_socket, NULL, NULL)`: blocks until a client connects and returns a new socket that is used to communicate with the client.
+   - `send(client_socket, server_message, sizeof(server_message), 0)`: sends the message `"You have reached the server!"` to the client.
+   - `recv(client_socket, &client_response, sizeof(client_response), 0)`: receives the message from the client and stores it in `client_response`.
+   - `printf("The client said: %s\n", client_response)`: prints the message received from the client.
+   - `close(server_socket)`: closes the socket.
+
+2. Echo client:
+   - `#include <stdio.h>`, `#include <string.h>`, `#include <sys/socket.h>`, `#include <netinet/in.h>`: header files for standard input/output, string handling, sockets, and Internet addresses.
+   - `client_socket = socket(AF_INET, SOCK_STREAM, 0)`: creates a socket of type `AF_INET` (IPv4) and `SOCK_STREAM` (TCP).
+   - `client_address`: a struct of type `sockaddr_in` that stores the server's IP address and port number.
+   - `connect(client_socket, (struct sockaddr*) &client_address, sizeof(client_address))`: connects the socket to the server's IP address and port number.
+   - `fgets(client_message, sizeof(client_message), stdin)`: reads a message from the user.
+   - `send(client_socket, client_message, sizeof(client_message), 0)`: sends the message to the server.
+   - `recv(client_socket, &server_response, sizeof(server_response), 0)`: receives the message from the server and stores it in `server_response`.
+   - `printf("The server said: %s\n", server_response)`: prints the message received from the server.
+   - `close(client_socket)`: closes the socket.
+
+b. Chat:
+
+1. Chat server:
+   - `#include <stdio.h>`, `#include <string.h>`, `#include <sys/socket.h>`, `#include <netinet/in.h>`: header files for standard input/output, string handling, sockets, and Internet addresses.
+   - `server_socket = socket(AF_INET, SOCK_STREAM, 0)`: creates a socket of type `AF_INET` (IPv4) and `SOCK_STREAM` (TCP).
+   - `server_address`: a struct of type `sockaddr_in` that stores the server's IP address and port number.
+   - `bind(server_socket, (struct sockaddr*) &server_address, sizeof(server_address))`: associates the socket with the server's IP address and port number.
+   - `listen(server_socket, 5)`: marks the socket as a passive socket, ready to accept incoming connections.
+   - `client_socket = accept(server_socket, NULL, NULL)`: blocks until a client connects and returns a new socket that is used to communicate with the client.
+   - `fgets(server_message, sizeof(server_message), stdin)`: reads a message from the user.
+   - `send(client_socket, server_message, sizeof(server_message), 0)`: sends the message to the client.
+   - `recv(client_socket, &client_response, sizeof(client_response), 0)`: receives the message from the client and stores it in `client_response`.
+   - `printf("Client: %s\n", client_response)`: prints the message received from the client.
+   - `close(server_socket)`: closes the socket.
+
+2. Chat client:
+   - `#include <stdio.h>`, `#include <string.h>`, `#include <sys/socket.h>`, `#include <netinet/in.h>`: header files for standard input/output, string handling, sockets, and Internet addresses.
+   - `client_socket = socket(AF_INET, SOCK_STREAM, 0)`: creates a socket of type `AF_INET` (IPv4) and `SOCK_STREAM` (TCP).
+   - `client_address`: a struct of type `sockaddr_in` that stores the server's IP address and port number.
+   - `connect(client_socket, (struct sockaddr*) &client_address, sizeof(client_address))`: connects the socket to the server's IP address and port number.
+   - `fgets(client_message, sizeof(client_message), stdin)`: reads a message from the user.
+   - `send(client_socket, client_message, sizeof(client_message), 0)`: sends the message to the server.
+   - `recv(client_socket, &server_response, sizeof(server_response), 0)`: receives the message from the server and stores it in `server_response`.
+   - `printf("Server: %s\n", server_response)`: prints the message received from the server.
+   - `close(client_socket)`: closes the socket.
+
+c. File Transfer:
+
+1. File server:
+   - `#include <stdio.h>`, `#include <string.h>`, `#include <sys/socket.h>`, `#include <netinet/in.h>`: header files for standard input/output, string handling, sockets, and Internet addresses.
+   - `server_socket = socket(AF_INET, SOCK_STREAM, 0)`: creates a socket of type `AF_INET` (IPv4) and `SOCK_STREAM` (TCP).
+   - `server_address`: a struct of typ
+*/

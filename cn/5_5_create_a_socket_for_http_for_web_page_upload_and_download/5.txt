@@ -1,0 +1,4 @@
+5. Create a socket for HTTP for web page upload and download.
+/*
+ This code is a simple client-server program that communicates over a network using sockets. It starts by including some header files that provide functions for input/output, string manipulation, and socket communication. Then it defines a function `error` that takes an error message and prints it out, then exits the program. The main function of the program takes two command-line arguments, a host name and a port number. It creates a socket, connects to the server, sends a message, receives a response, and closes the socket. It also checks for errors along the way and prints out the response from the server.
+*/

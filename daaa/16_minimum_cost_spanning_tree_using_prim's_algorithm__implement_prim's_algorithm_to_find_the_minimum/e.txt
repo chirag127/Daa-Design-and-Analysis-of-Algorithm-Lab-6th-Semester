@@ -1,0 +1,102 @@
+/*
+ 
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+```
+Include standard input/output library and standard library for general functions, and stdbool library for boolean data type.
+
+```
+#define MAX_VERTICES 100
+#define INF 1000000000
+```
+Define maximum number of vertices in the graph and a large number to represent "infinity".
+
+```
+int n, m;
+int cost[MAX_VERTICES][MAX_VERTICES];
+bool used[MAX_VERTICES];
+int mincost[MAX_VERTICES];
+```
+Declare variables:
+- `n` and `m` are the number of vertices and edges in the graph
+- `cost[i][j]` is the cost of the edge between vertices `i` and `j`
+- `used[i]` is a boolean indicating if vertex `i` has been included in the minimum cost spanning tree
+- `mincost[i]` is the minimum cost of an edge connecting a vertex not included in the minimum cost spanning tree to vertex `i`
+
+```
+void prim() {
+  for (int i = 0; i < n; i++) {
+    mincost[i] = INF;
+    used[i] = false;
+  }
+
+  mincost[0] = 0;
+  int res = 0;
+```
+Define the Prim's algorithm function.
+- Initialize `mincost` array with `INF` and `used` array with `false` for all vertices.
+- Set the minimum cost of vertex 0 to 0 and initialize the result to 0.
+
+```
+  while (true) {
+    int v = -1;
+    for (int u = 0; u < n; u++) {
+      if (!used[u] && (v == -1 || mincost[u] < mincost[v])) v = u;
+    }
+```
+In each iteration of the while loop, find the vertex `v` with the smallest `mincost` among vertices not included in the minimum cost spanning tree.
+
+```
+    if (v == -1) break;
+    used[v] = true;
+    res += mincost[v];
+```
+If no such vertex is found, break the loop.
+- Mark `v` as included in the minimum cost spanning tree.
+- Add `mincost[v]` to the result.
+
+```
+    for (int u = 0; u < n; u++) {
+      mincost[u] = min(mincost[u], cost[v][u]);
+    }
+  }
+```
+For each vertex `u` not included in the minimum cost spanning tree, update `mincost[u]` to the minimum of its current value and `cost[v][u]`.
+
+```
+  printf("Minimum cost: %d\n", res);
+}
+```
+Print the result, which is the minimum cost of the minimum cost spanning tree.
+
+```
+int main() {
+  scanf("%d%d", &n, &m);
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      cost[i][j] = INF;
+    }
+  }
+```
+In the main function, read `n` and `m` and initialize the `cost` array with `INF` for all edges.
+
+```
+  for (int i = 0; i < m; i++) {
+    int a, b, c;
+    scanf("%d%d%d", &a, &b, &c);
+    a--; b--;
+    cost[a][b] = cost[b][a] = c;
+  }
+```
+Read `m` edges and update the `cost` array with the costs of the edges.
+
+```
+  prim();
+  return 0;
+}
+```
+Call the Prim's algorithm function and return 0.
+*/

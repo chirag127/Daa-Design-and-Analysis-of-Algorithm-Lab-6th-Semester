@@ -1,0 +1,26 @@
+/*
+
+This is a C code that implements Kruskal's Algorithm to find the minimum spanning tree of a connected, undirected and weighted graph.
+
+Lines 1-4: Include the necessary libraries.
+
+Lines 6-10: Define the structure "Edge" to represent an edge in the graph.
+
+Lines 12-17: Define the structure "Graph" to represent a connected, undirected and weighted graph.
+
+Lines 19-27: Define the function "createGraph" to create a graph with V vertices and E edges.
+
+Lines 29-32: Define the structure "subset" to represent a subset for union-find.
+
+Lines 34-43: Define the function "find" to find the set of an element i.
+
+Lines 45-55: Define the function "Union" to do the union of two sets of x and y.
+
+Lines 57-63: Define the function "myComp" to compare two edges according to their weights.
+
+Lines 65-93: Define the function "KruskalMST" to construct MST using Kruskal's algorithm.
+
+Lines 95-143: Define the main function to test the code.
+
+The code sorts all the edges in non-decreasing order of their weight, creates V subsets with single elements, and then adds the smallest edge to the result if it doesn't cause a cycle. The result is the minimum spanning tree.
+*/

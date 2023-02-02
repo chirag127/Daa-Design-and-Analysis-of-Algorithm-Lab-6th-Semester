@@ -1,0 +1,52 @@
+/*
+
+
+Stop and Wait Protocol:
+1. #include <stdio.h>, #include <stdlib.h>, #include <unistd.h>, #include <string.h>, #include <arpa/inet.h>, and #include <sys/socket.h> are header files that are used for input/output operations, memory allocation, UNIX standard functions, string operations, internet address manipulation, and socket programming respectively.
+
+2. `#define BUFSIZE 30` defines a constant named BUFSIZE with a value of 30.
+
+3. `void error_handling(char *message)` is a function that takes a string as an argument and prints the string to the standard error stream.
+
+4. `int main(int argc, char **argv)` is the main function that takes two arguments, `argc` (number of command-line arguments) and `argv` (an array of pointers to the arguments).
+
+5. `int sock` is a socket file descriptor.
+
+6. `struct sockaddr_in serv_addr` is a structure that contains an internet address.
+
+7. `char message[BUFSIZE]` is an array of characters with a size of BUFSIZE.
+
+8. `int str_len` is a variable that stores the length of a string.
+
+9. `if (argc != 3)` checks if the number of command-line arguments is not equal to 3. If it's true, it prints the usage message and exits the program.
+
+10. `sock = socket(PF_INET, SOCK_STREAM, 0)` creates a socket with the address family of AF_INET, the socket type of SOCK_STREAM, and the protocol of 0 (default).
+
+11. `if (sock == -1)` checks if the socket creation fails. If it's true, it calls the error_handling function with the message "socket() error".
+
+12. `memset(&serv_addr, 0, sizeof(serv_addr))` fills the serv_addr structure with zeros.
+
+13. `serv_addr.sin_family = AF_INET` sets the address family of serv_addr to AF_INET.
+
+14. `serv_addr.sin_addr.s_addr = inet_addr(argv[1])` sets the IP address of serv_addr to the first command-line argument.
+
+15. `serv_addr.sin_port = htons(atoi(argv[2]))` sets the port number of serv_addr to the second command-line argument.
+
+16. `if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == -1)` connects the socket to the server. If the connection fails, it calls the error_handling function with the message "connect() error".
+
+17. `while (1)` starts an infinite loop.
+
+18. `fputs("Input message(Q to quit): ", stdout)` prints the message "Input message(Q to quit): " to the standard output stream.
+
+19. `fgets(message, BUFSIZE, stdin)` reads a line from the standard input stream and stores it in the message array.
+
+20. `if (!strcmp(message, "q\n") || !strcmp(message, "Q\n"))` checks if the message is equal to "q\n" or "Q\n". If it's true, it breaks the loop.
+
+21. `write(sock, message, strlen(message))` writes the message to the socket.
+
+22. `str_len = read(sock, message, BUFSIZE - 1)` reads the message from the socket and stores the length of the message in str_len.
+
+23. `message[str_len] = 0` sets the value of the str_len-th element of the message array to 0.
+
+24. `printf("Message from server: %s", message)` prints the message from the server
+*/

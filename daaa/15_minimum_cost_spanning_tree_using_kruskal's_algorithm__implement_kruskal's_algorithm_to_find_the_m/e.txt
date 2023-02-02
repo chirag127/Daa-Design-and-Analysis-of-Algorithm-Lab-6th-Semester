@@ -1,0 +1,33 @@
+/*
+
+
+1. #include<stdio.h>, #include<stdlib.h>, #include<string.h> 
+   - These are header files used for input/output, memory allocation and string manipulation respectively. 
+
+2. struct Edge { int src, dest, weight; };
+   - This defines a structure "Edge" with three members "src", "dest" and "weight". These members represent the source vertex, destination vertex and weight of the edge in a graph.
+
+3. struct Graph { int V, E; struct Edge* edge; };
+   - This defines a structure "Graph" with two members "V" and "E" and a pointer to an array of Edge structure. "V" represents the number of vertices and "E" represents the number of edges in the graph.
+
+4. struct Graph* createGraph(int V, int E) 
+   - This function creates a graph with "V" vertices and "E" edges. It uses malloc function to allocate memory dynamically for the graph structure and the array of Edge structures.
+
+5. int find(int parent[], int i)
+   - This function is used to find the parent of a node in the union-find algorithm. It returns the parent of the node if it exists, otherwise it returns the node itself.
+
+6. void Union(int parent[], int x, int y)
+   - This function is used to union two nodes in the union-find algorithm. It sets the parent of one node to the other node.
+
+7. int isCycle(struct Graph* graph) 
+   - This function is used to check if the graph contains a cycle. It uses union-find algorithm to detect the cycle. If a cycle is detected, it returns 1, otherwise it returns 0.
+
+8. int cmp(const void* a, const void* b) 
+   - This function is used to sort the edges of the graph in ascending order of their weight. It is used as a comparison function for the qsort function.
+
+9. void KruskalMST(struct Graph* graph)
+   - This function implements Kruskal's algorithm to find the minimum cost spanning tree of a graph. It sorts the edges of the graph in ascending order of their weight, then adds edges to the result while avoiding cycles.
+
+10. int main() 
+   - This is the main function of the program. It creates a graph with 4 vertices and 5 edges, then calls the KruskalMST function to find the minimum cost spanning tree of the graph. Finally, it prints the edges in the constructed minimum spanning tree.
+*/

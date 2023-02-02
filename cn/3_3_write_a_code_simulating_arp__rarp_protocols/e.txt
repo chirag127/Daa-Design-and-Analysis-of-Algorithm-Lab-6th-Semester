@@ -1,0 +1,11 @@
+/*
+ 
+
+- `#include <stdio.h>` and `#include <string.h>` are standard library headers for input/output and string operations, respectively.
+- `struct ARP_entry` and `struct RARP_entry` define data structures to store IP address and MAC address pairs.
+- `ARP_table` and `RARP_table` are arrays of these structures with a maximum size of 100.
+- `ARP_table_size` and `RARP_table_size` are integers to keep track of the number of entries in the ARP and RARP tables, respectively.
+- `ARP_request` and `RARP_request` are functions that take a destination IP address or MAC address as input, respectively, and search for it in the ARP and RARP tables. If found, the corresponding IP address or MAC address is printed. If not found, a message is printed indicating that a request is being sent.
+- `ARP_response` and `RARP_response` are functions that take a sender IP address or MAC address and the corresponding MAC address or IP address as input, respectively, and update or add the pair to the ARP and RARP tables.
+- `main` is the main function that calls `ARP_request`, `ARP_response`, and `RARP_request`, and `RARP_response` with example inputs.
+*/

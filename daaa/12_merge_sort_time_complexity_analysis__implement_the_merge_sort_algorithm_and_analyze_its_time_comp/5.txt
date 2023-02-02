@@ -1,0 +1,4 @@
+Merge Sort Time Complexity Analysis: Implement the merge sort algorithm and analyze its time complexity for varying values of n (number of elements in the array). Plot a graph to show the relationship between the time taken and n.
+/*
+ This code implements the merge sort algorithm in C to sort an array of integers. The `mergeSort` function splits the array into subarrays and calls the `merge` function to merge the subarrays. The `main` function initializes an array, calls the `mergeSort` function to sort the array, and prints the sorted array.
+*/
